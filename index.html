@@ -1,0 +1,3637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Format Franchising - McDonald's</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --mcd-red: #DA291C;
+            --mcd-yellow: #FFC72C;
+            --mcd-dark: #0C0C0C;
+            --mcd-white: #FFFFFF;
+            --mcd-gold: #FFD700;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: var(--mcd-dark);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--mcd-red), var(--mcd-yellow));
+            z-index: 1000;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--mcd-yellow);
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--mcd-yellow);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            padding: 40px 60px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Enhanced Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.3); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 199, 44, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(255, 199, 44, 0.3); }
+        }
+
+        @keyframes wipe {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes slideInRotate {
+            from { opacity: 0; transform: translateX(-100px) rotate(-10deg); }
+            to { opacity: 1; transform: translateX(0) rotate(0deg); }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+            60% { transform: scale(1.2) rotate(10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px var(--mcd-yellow); }
+            50% { box-shadow: 0 0 60px var(--mcd-yellow), 0 0 100px var(--mcd-red); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        @keyframes flipIn {
+            from { opacity: 0; transform: perspective(400px) rotateY(90deg); }
+            to { opacity: 1; transform: perspective(400px) rotateY(0); }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fadeInUp { animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-fadeInLeft { animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-fadeInRight { animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-zoomIn { animation: zoomIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-bounce { animation: bounce 1s ease; }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .animate-slideInRotate { animation: slideInRotate 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-popIn { animation: popIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-flipIn { animation: flipIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-glowPulse { animation: glowPulse 2s infinite; }
+
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; }
+        .delay-5 { animation-delay: 1s; opacity: 0; }
+        .delay-6 { animation-delay: 1.2s; opacity: 0; }
+        .delay-7 { animation-delay: 1.4s; opacity: 0; }
+        .delay-8 { animation-delay: 1.6s; opacity: 0; }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--mcd-yellow), var(--mcd-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255,255,255,0.3) 50%, 
+                transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* INFO PANEL - Slides from right when clicking elements */
+        .info-panel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 480px;
+            height: 100vh;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+            z-index: 2000;
+            transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+            overflow-y: auto;
+            border-left: 4px solid var(--mcd-yellow);
+        }
+
+        .info-panel.active {
+            right: 0;
+        }
+
+        .info-panel-header {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
+            padding: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .info-panel-header h3 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-panel-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-panel-close:hover {
+            background: var(--mcd-yellow);
+            color: var(--mcd-dark);
+            transform: rotate(90deg);
+        }
+
+        .info-panel-content {
+            padding: 30px;
+            color: white;
+        }
+
+        .info-panel-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .info-panel-content .highlight {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
+            color: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .info-panel-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-panel-content ul li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-panel-content ul li i {
+            color: var(--mcd-yellow);
+            font-size: 1.3rem;
+        }
+
+        .info-panel-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
+        }
+
+        /* Fallback image placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .info-panel-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-panel-stat {
+            background: rgba(255,199,44,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,199,44,0.2);
+        }
+
+        .info-panel-stat .value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+        }
+
+        .info-panel-stat .label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Overlay when info panel is open */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Clickable Items */
+        .clickable {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .clickable::after {
+            content: '+';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 25px;
+            height: 25px;
+            background: var(--mcd-yellow);
+            color: var(--mcd-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .clickable:hover::after {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* More Animations */
+        @keyframes float3D {
+            0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+            25% { transform: translateY(-10px) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(0) rotateX(0) rotateY(0); }
+            75% { transform: translateY(-5px) rotateX(-5deg) rotateY(-5deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(100px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-180deg) scale(0); }
+            to { opacity: 1; transform: rotate(0) scale(1); }
+        }
+
+        @keyframes morphing {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+        }
+
+        .animate-float3D { animation: float3D 4s ease-in-out infinite; }
+        .animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+        .animate-slideUp { animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-rotateIn { animation: rotateIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-morphing { animation: morphing 8s ease-in-out infinite; }
+
+        /* Image Gallery Grid */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Floating Elements */
+        .floating-burger {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.1;
+            animation: float3D 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-fries {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: float3D 8s ease-in-out infinite;
+            animation-delay: 2s;
+            pointer-events: none;
+        }
+
+        /* SLIDE 1 - Title */
+        .slide-1 {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        .slide-1::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,199,44,0.1) 0%, transparent 70%);
+            animation: pulse 4s infinite;
+        }
+
+        .slide-1 .left-panel {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide-1 .left-panel img {
+            width: 90%;
+            height: 85%;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .slide-1 .left-panel img:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+
+        .slide-1 .right-panel {
+            width: 55%;
+            padding-left: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--mcd-white);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .slide-1 .gold-bar {
+            width: 250px;
+            height: 8px;
+            background: linear-gradient(90deg, var(--mcd-yellow), var(--mcd-gold));
+            margin: 25px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255,199,44,0.5);
+        }
+
+        .slide-1 .subtitle {
+            font-size: 2.2rem;
+            color: var(--mcd-yellow);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .slide-1 .author {
+            font-size: 1.1rem;
+            color: var(--mcd-white);
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .slide-1 .author i {
+            margin-right: 10px;
+            color: var(--mcd-yellow);
+        }
+
+        /* McDonald's Logo Animation */
+        .mcd-logo {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 4rem;
+            color: var(--mcd-yellow);
+            text-shadow: 0 0 30px rgba(255,199,44,0.5);
+            animation: glowPulse 2s infinite;
+        }
+
+        /* SLIDE 2 - What is Franchising */
+        .slide-2 {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, #FFB300 100%);
+            flex-direction: row;
+            align-items: flex-start;
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-2::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(218,41,28,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .slide-2 .number {
+            font-size: 12rem;
+            font-weight: 900;
+            color: var(--mcd-red);
+            line-height: 1;
+            margin-right: 40px;
+            text-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+        }
+
+        .slide-2 .content {
+            flex: 1;
+        }
+
+        .slide-2 h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .slide-2 .divider {
+            width: 450px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--mcd-red), transparent);
+            margin-bottom: 35px;
+            border-radius: 3px;
+        }
+
+        .slide-2 .point {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            padding: 28px 40px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-2 .point::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .slide-2 .point:hover::before {
+            left: 100%;
+        }
+
+        .slide-2 .point:hover {
+            transform: translateX(20px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .slide-2 .point i {
+            margin-right: 20px;
+            font-size: 1.8rem;
+            color: var(--mcd-yellow);
+        }
+
+        /* SLIDE 3 - Business Format */
+        .slide-3 {
+            background: linear-gradient(180deg, var(--mcd-dark) 0%, #1a1a1a 100%);
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFC72C' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .slide-3 h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            margin-bottom: 50px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .slide-3 .diagram {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-3 .center-circle {
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.4rem;
+            z-index: 2;
+            box-shadow: 0 0 60px rgba(218,41,28,0.5);
+            animation: pulse 3s infinite;
+        }
+
+        .slide-3 .element {
+            position: absolute;
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
+            padding: 18px 30px;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 1rem;
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .slide-3 .element:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255,199,44,0.4);
+        }
+
+        .slide-3 .element i {
+            margin-right: 10px;
+        }
+
+        .slide-3 .element:nth-child(2) { top: 8%; left: 22%; }
+        .slide-3 .element:nth-child(3) { top: 8%; right: 22%; }
+        .slide-3 .element:nth-child(4) { top: 42%; right: 8%; }
+        .slide-3 .element:nth-child(5) { bottom: 8%; right: 22%; }
+        .slide-3 .element:nth-child(6) { bottom: 8%; left: 22%; }
+        .slide-3 .element:nth-child(7) { top: 42%; left: 8%; }
+
+        /* Connection Lines */
+        .slide-3 .connection {
+            position: absolute;
+            background: var(--mcd-yellow);
+            height: 3px;
+            opacity: 0.3;
+            transform-origin: left center;
+        }
+
+        /* SLIDE 4 - McDonald's Story */
+        .slide-4 {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #C41E14 100%);
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-4::before {
+            content: '🍔';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.05;
+            right: -50px;
+            bottom: -50px;
+        }
+
+        .slide-4 h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--mcd-white);
+            margin-bottom: 35px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .slide-4 .timeline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            z-index: 1;
+        }
+
+        .slide-4 .timeline-image {
+            width: 100%;
+            max-width: 900px;
+            height: 280px;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .slide-4 .timeline-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3));
+        }
+
+        .slide-4 .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 5s ease;
+        }
+
+        .slide-4 .timeline-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .slide-4 .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .slide-4 .timeline-line {
+            position: absolute;
+            width: 85%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--mcd-yellow), var(--mcd-gold));
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255,199,44,0.5);
+        }
+
+        .slide-4 .timeline-point {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 60px;
+            z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .slide-4 .timeline-point:hover {
+            transform: scale(1.1);
+        }
+
+        .slide-4 .timeline-point .year {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--mcd-white);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slide-4 .timeline-point .dot {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--mcd-yellow), var(--mcd-gold));
+            border-radius: 50%;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(255,199,44,0.6);
+            animation: pulse 2s infinite;
+        }
+
+        .slide-4 .timeline-point .desc {
+            font-size: 1.1rem;
+            color: var(--mcd-white);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* SLIDE 5 - Ray Kroc */
+        .slide-5 {
+            background: #fafafa;
+            flex-direction: row;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .slide-5 .left-dark {
+            width: 45%;
+            background: linear-gradient(180deg, var(--mcd-dark) 0%, #1a1a1a 100%);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-5 .left-dark::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            background: linear-gradient(90deg, var(--mcd-dark), transparent);
+        }
+
+        .slide-5 .number {
+            font-size: 6rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 rgba(255,199,44,0.3);
+        }
+
+        .slide-5 h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--mcd-white);
+            margin-bottom: 10px;
+        }
+
+        .slide-5 .subtitle {
+            font-size: 1.6rem;
+            color: var(--mcd-yellow);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .slide-5 .ray-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid var(--mcd-yellow);
+            margin-top: auto;
+            box-shadow: 0 0 40px rgba(255,199,44,0.4);
+            transition: transform 0.5s ease;
+        }
+
+        .slide-5 .ray-image:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .slide-5 .ray-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(20%);
+        }
+
+        .slide-5 .right-content {
+            width: 55%;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-5 .quote {
+            font-size: 2.2rem;
+            font-style: italic;
+            color: var(--mcd-red);
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: Georgia, serif;
+            position: relative;
+        }
+
+        .slide-5 .quote::before,
+        .slide-5 .quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--mcd-yellow);
+            position: absolute;
+        }
+
+        .slide-5 .quote::before {
+            top: -20px;
+            left: -30px;
+        }
+
+        .slide-5 .quote::after {
+            bottom: -40px;
+            right: -30px;
+        }
+
+        .slide-5 .fact {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
+            padding: 28px 40px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .slide-5 .fact:hover {
+            transform: translateX(15px);
+            box-shadow: 0 15px 40px rgba(255,199,44,0.3);
+        }
+
+        .slide-5 .fact i {
+            margin-right: 20px;
+            font-size: 1.6rem;
+            color: var(--mcd-red);
+        }
+
+        /* SLIDE 6 - Building Golden Arches */
+        .slide-6 {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, #FFB300 100%);
+            flex-direction: row;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-6::before {
+            content: 'M';
+            position: absolute;
+            font-size: 50rem;
+            font-weight: 900;
+            color: rgba(218,41,28,0.05);
+            right: -100px;
+            bottom: -150px;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .slide-6 .pillars {
+            width: 50%;
+            z-index: 1;
+        }
+
+        .slide-6 h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--mcd-red);
+            margin-bottom: 35px;
+            line-height: 1.2;
+        }
+
+        .slide-6 .pillar {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #B71C1C 100%);
+            color: white;
+            padding: 28px 40px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(218,41,28,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-6 .pillar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .slide-6 .pillar:hover::after {
+            left: 100%;
+        }
+
+        .slide-6 .pillar:hover {
+            transform: translateX(15px) scale(1.02);
+        }
+
+        .slide-6 .pillar i {
+            margin-right: 20px;
+            font-size: 1.8rem;
+        }
+
+        .slide-6 .slogan-area {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .slide-6 .slogan {
+            font-size: 4.5rem;
+            font-style: italic;
+            color: var(--mcd-red);
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            animation: bounce 2s infinite;
+        }
+
+        .slide-6 .slogan-info {
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .slide-6 .arches {
+            font-size: 8rem;
+            color: var(--mcd-red);
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(218,41,28,0.3);
+        }
+
+        /* SLIDE 7 - Franchise Model */
+        .slide-7 {
+            background: linear-gradient(180deg, var(--mcd-dark) 0%, #151515 100%);
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-7 h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .slide-7 .model-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 45px;
+            align-items: stretch;
+        }
+
+        .slide-7 .model-box {
+            padding: 35px;
+            border-radius: 25px;
+            width: 420px;
+            transition: all 0.4s ease;
+        }
+
+        .slide-7 .model-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .slide-7 .franchisor {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #B71C1C 100%);
+            color: white;
+            box-shadow: 0 15px 40px rgba(218,41,28,0.4);
+        }
+
+        .slide-7 .franchisee {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
+            color: #1a1a1a;
+            box-shadow: 0 15px 40px rgba(255,199,44,0.4);
+        }
+
+        .slide-7 .model-box h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide-7 .model-box h3 i {
+            margin-right: 15px;
+            font-size: 2.2rem;
+        }
+
+        .slide-7 .model-box ul {
+            list-style: none;
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        .slide-7 .model-box ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        .slide-7 .model-box ul li::before {
+            content: '✓';
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        .slide-7 .arrow {
+            font-size: 4rem;
+            color: var(--mcd-yellow);
+            align-self: center;
+            animation: pulse 2s infinite;
+            text-shadow: 0 0 20px rgba(255,199,44,0.5);
+        }
+
+        .slide-7 .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+        }
+
+        .slide-7 .stat-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+            border: 3px solid var(--mcd-yellow);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-7 .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,199,44,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .slide-7 .stat-box:hover::before {
+            left: 100%;
+        }
+
+        .slide-7 .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255,199,44,0.3);
+        }
+
+        .slide-7 .stat-box .value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            text-shadow: 0 0 20px rgba(255,199,44,0.5);
+        }
+
+        .slide-7 .stat-box .label {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        /* SLIDE 8 - Global Empire */
+        .slide-8 {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-8::before {
+            content: '🌍';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slide-8 h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--mcd-white);
+            margin-bottom: 35px;
+            z-index: 1;
+        }
+
+        .slide-8 .stats-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            z-index: 1;
+        }
+
+        .slide-8 .big-stat {
+            text-align: left;
+        }
+
+        .slide-8 .big-stat .number {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            line-height: 1;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            animation: countUp 1s ease forwards;
+        }
+
+        .slide-8 .big-stat .label {
+            font-size: 1.6rem;
+            color: var(--mcd-white);
+            font-weight: 600;
+        }
+
+        .slide-8 .side-stats {
+            text-align: right;
+        }
+
+        .slide-8 .side-stat {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .slide-8 .side-stat i {
+            margin-left: 15px;
+            font-size: 2rem;
+        }
+
+        .slide-8 .side-stat:first-child { color: var(--mcd-white); }
+        .slide-8 .side-stat:last-child { color: var(--mcd-yellow); }
+
+        .slide-8 .moscow-section {
+            display: flex;
+            gap: 35px;
+            background: rgba(0,0,0,0.3);
+            padding: 35px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .slide-8 .moscow-section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .slide-8 .moscow-image {
+            width: 380px;
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .slide-8 .moscow-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .slide-8 .moscow-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .slide-8 .moscow-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-8 .moscow-text h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            margin-bottom: 18px;
+        }
+
+        .slide-8 .moscow-text p {
+            font-size: 1.4rem;
+            color: var(--mcd-white);
+            line-height: 1.8;
+        }
+
+        /* SLIDE 9 - Key Takeaways */
+        .slide-9 {
+            background: linear-gradient(135deg, #fafafa 0%, #e8e8e8 100%);
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide-9::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23DA291C' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .slide-9 h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--mcd-red);
+            margin-bottom: 45px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .slide-9 .takeaways {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex: 1;
+            z-index: 1;
+        }
+
+        .slide-9 .takeaway {
+            padding: 45px;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-9 .takeaway::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .slide-9 .takeaway:hover::before {
+            left: 100%;
+        }
+
+        .slide-9 .takeaway:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .slide-9 .takeaway:nth-child(odd) {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #B71C1C 100%);
+            color: white;
+            box-shadow: 0 15px 40px rgba(218,41,28,0.3);
+        }
+
+        .slide-9 .takeaway:nth-child(even) {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
+            color: #1a1a1a;
+            box-shadow: 0 15px 40px rgba(255,199,44,0.3);
+        }
+
+        .slide-9 .takeaway .num {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+            opacity: 0.9;
+        }
+
+        .slide-9 .takeaway .text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .slide-9 .takeaway i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* SLIDE 10 - Movie */
+        .slide-10 {
+            background: linear-gradient(180deg, var(--mcd-dark) 0%, #1a1a1a 100%);
+            flex-direction: row;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-10::before {
+            content: '🎬';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.05;
+            right: 50px;
+            bottom: 50px;
+        }
+
+        .slide-10 h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            margin-bottom: 35px;
+        }
+
+        .slide-10 .poster {
+            width: 320px;
+            height: 480px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            margin-right: 60px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .slide-10 .poster::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .slide-10 .poster:hover::after {
+            opacity: 0.8;
+        }
+
+        .slide-10 .poster:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 40px 100px rgba(255,199,44,0.3);
+        }
+
+        .slide-10 .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        .slide-10 .poster:hover img {
+            filter: brightness(0.7);
+        }
+
+        .slide-10 .movie-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-10 .movie-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--mcd-yellow);
+            margin-bottom: 25px;
+        }
+
+        .slide-10 .movie-desc {
+            font-size: 1.3rem;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 35px;
+        }
+
+        .slide-10 .movie-desc strong {
+            color: white;
+        }
+
+        .slide-10 .movie-quote {
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
+            padding: 30px 40px;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #1a1a1a;
+            font-weight: 600;
+            box-shadow: 0 15px 40px rgba(255,199,44,0.3);
+            position: relative;
+        }
+
+        .slide-10 .movie-quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 3rem;
+            color: var(--mcd-red);
+            opacity: 0.3;
+        }
+
+        .slide-10 .rating {
+            display: flex;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .slide-10 .rating i {
+            color: var(--mcd-yellow);
+            font-size: 1.5rem;
+        }
+
+        /* SLIDE 11 - Thank You */
+        .slide-11 {
+            background: linear-gradient(180deg, var(--mcd-dark) 0%, #0a0a0a 100%);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-11::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,199,44,0.1) 0%, transparent 70%);
+            animation: pulse 4s infinite;
+        }
+
+        .slide-11 .thank-band {
+            background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
+            width: 100%;
+            padding: 70px 0;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(218,41,28,0.4);
+        }
+
+        .slide-11 h1 {
+            font-size: 7rem;
+            font-weight: 900;
+            color: var(--mcd-white);
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            animation: pulse 3s infinite;
+        }
+
+        .slide-11 .gold-line {
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, var(--mcd-yellow), transparent);
+            margin-bottom: 50px;
+            z-index: 1;
+        }
+
+        .slide-11 .questions {
+            font-size: 3rem;
+            color: var(--mcd-yellow);
+            margin-bottom: 40px;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .slide-11 .author {
+            font-size: 1.2rem;
+            color: #888;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .slide-11 .author i {
+            color: var(--mcd-yellow);
+        }
+
+        .slide-11 .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            z-index: 1;
+        }
+
+        .slide-11 .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--mcd-yellow);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .slide-11 .social-icons a:hover {
+            background: var(--mcd-yellow);
+            color: var(--mcd-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav button {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            border: 2px solid transparent;
+            padding: 18px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav button:hover {
+            background: var(--mcd-red);
+            border-color: var(--mcd-yellow);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(218,41,28,0.4);
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,199,44,0.3);
+        }
+
+        .fullscreen-btn {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            border: 2px solid rgba(255,199,44,0.3);
+            padding: 12px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            z-index: 100;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--mcd-red);
+            border-color: var(--mcd-yellow);
+            transform: scale(1.05);
+        }
+
+        /* Keyboard hints */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: #888;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .keyboard-hint kbd {
+            background: rgba(255,255,255,0.1);
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin: 0 3px;
+        }
+
+        /* ==================== MOBILE RESPONSIVE ==================== */
+        
+        /* Tablet */
+        @media screen and (max-width: 1024px) {
+            .slide {
+                padding: 30px 40px;
+            }
+            
+            .slide-1 h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            .slide-1 .left-panel img {
+                max-width: 250px !important;
+            }
+            
+            .info-panel {
+                width: 350px;
+            }
+            
+            .nav-buttons {
+                bottom: 20px;
+            }
+            
+            .nav-buttons button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Mobile */
+        @media screen and (max-width: 768px) {
+            body {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            
+            .slide {
+                padding: 20px;
+                flex-direction: column !important;
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto;
+            }
+            
+            /* Slide 1 - Title */
+            .slide-1 {
+                flex-direction: column !important;
+                text-align: center;
+                padding-top: 60px;
+            }
+            
+            .slide-1 .mcd-logo {
+                font-size: 80px !important;
+                top: 10px !important;
+                right: 10px !important;
+            }
+            
+            .slide-1 .left-panel {
+                margin-bottom: 20px;
+            }
+            
+            .slide-1 .left-panel img {
+                max-width: 180px !important;
+            }
+            
+            .slide-1 .right-panel {
+                padding: 0 !important;
+            }
+            
+            .slide-1 h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .slide-1 .subtitle {
+                font-size: 1rem !important;
+            }
+            
+            .slide-1 .author {
+                font-size: 0.85rem !important;
+            }
+            
+            .slide-1 .image-gallery {
+                position: relative !important;
+                bottom: auto !important;
+                left: auto !important;
+                right: auto !important;
+                margin-top: 20px;
+                flex-direction: column;
+                gap: 10px !important;
+            }
+            
+            .slide-1 .gallery-item {
+                width: 100% !important;
+            }
+            
+            /* Slide 2 - Franchising */
+            .slide-2 {
+                flex-direction: column !important;
+            }
+            
+            .slide-2 .number {
+                font-size: 60px !important;
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+            }
+            
+            .slide-2 .content {
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .slide-2 h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-2 .point {
+                padding: 15px !important;
+                font-size: 0.9rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .slide-2 .franchise-image {
+                position: relative !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 100% !important;
+                margin-top: 20px;
+            }
+            
+            .slide-2 .franchise-image img {
+                width: 100% !important;
+                height: 200px !important;
+            }
+            
+            /* Slide 3 - Diagram */
+            .slide-3 .diagram {
+                transform: scale(0.6) !important;
+            }
+            
+            .slide-3 h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            /* Slide 4 - Timeline */
+            .slide-4 h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            .slide-4 .timeline-container {
+                flex-direction: column !important;
+            }
+            
+            .slide-4 .timeline-image {
+                width: 100% !important;
+                margin-bottom: 20px;
+            }
+            
+            .slide-4 .timeline-image img {
+                height: 150px !important;
+            }
+            
+            .slide-4 .timeline {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .slide-4 .timeline-line {
+                display: none !important;
+            }
+            
+            .slide-4 .timeline-point {
+                margin-bottom: 15px;
+            }
+            
+            .slide-4 .timeline-point .year {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Slide 5 - Ray Kroc */
+            .slide-5 {
+                flex-direction: column !important;
+            }
+            
+            .slide-5 .left-dark {
+                width: 100% !important;
+                padding: 20px !important;
+                text-align: center;
+            }
+            
+            .slide-5 .number {
+                font-size: 50px !important;
+            }
+            
+            .slide-5 h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-5 .ray-image img {
+                width: 150px !important;
+                height: 150px !important;
+            }
+            
+            .slide-5 .right-content {
+                width: 100% !important;
+                padding: 20px !important;
+            }
+            
+            .slide-5 .quote {
+                font-size: 1.2rem !important;
+            }
+            
+            .slide-5 .fact {
+                padding: 12px 20px !important;
+                font-size: 0.9rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            /* Slide 6-7 - Pros & Cons */
+            .slide-6 h2, .slide-7 h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            .slide-6 .columns, .slide-7 .grid {
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+            
+            .slide-6 .column, .slide-7 .item {
+                width: 100% !important;
+                padding: 15px !important;
+            }
+            
+            .slide-6 .item, .slide-7 .item {
+                padding: 10px !important;
+                font-size: 0.85rem !important;
+            }
+            
+            /* Slide 8 - Global */
+            .slide-8 h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            .slide-8 .stats {
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+            
+            .slide-8 .stat-box {
+                padding: 20px !important;
+            }
+            
+            .slide-8 .stat-box .number {
+                font-size: 2rem !important;
+            }
+            
+            .slide-8 .moscow-section {
+                flex-direction: column !important;
+            }
+            
+            .slide-8 .moscow-image {
+                width: 100% !important;
+            }
+            
+            /* Slide 9 - Takeaways */
+            .slide-9 h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            .slide-9 .takeaways {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            
+            .slide-9 .takeaway {
+                padding: 15px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Slide 10 - Movie */
+            .slide-10 {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            
+            .slide-10 .poster {
+                margin-bottom: 20px;
+            }
+            
+            .slide-10 .poster img {
+                width: 180px !important;
+                height: 260px !important;
+            }
+            
+            .slide-10 h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            .slide-10 .movie-title {
+                font-size: 1.2rem !important;
+            }
+            
+            .slide-10 .movie-desc {
+                font-size: 0.9rem !important;
+            }
+            
+            .slide-10 .movie-quote {
+                font-size: 0.85rem !important;
+                padding: 15px !important;
+            }
+            
+            /* Slide 11 - Thank You */
+            .slide-11 h2 {
+                font-size: 2rem !important;
+            }
+            
+            .slide-11 .contact-info {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            
+            .slide-11 .contact-item {
+                padding: 15px 25px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Navigation */
+            .nav-buttons {
+                bottom: 10px;
+                gap: 10px;
+            }
+            
+            .nav-buttons button {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            
+            .slide-counter {
+                top: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            
+            .fullscreen-btn {
+                top: 10px;
+                left: 10px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            
+            .keyboard-hint {
+                display: none;
+            }
+            
+            /* Info Panel Mobile */
+            .info-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .info-panel-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .info-panel-content {
+                padding: 20px;
+            }
+        }
+        
+        /* Small phones */
+        @media screen and (max-width: 480px) {
+            .slide-1 h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-1 .left-panel img {
+                max-width: 140px !important;
+            }
+            
+            .slide h2 {
+                font-size: 1.1rem !important;
+            }
+            
+            .nav-buttons button {
+                padding: 8px 15px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* Landscape mobile */
+        @media screen and (max-width: 900px) and (orientation: landscape) {
+            .slide {
+                padding: 15px 30px;
+            }
+            
+            .slide-1 {
+                flex-direction: row !important;
+            }
+            
+            .slide-1 .left-panel img {
+                max-width: 120px !important;
+            }
+            
+            .slide-1 h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-1 .image-gallery {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">
+        <i class="fas fa-expand"></i> Fullscreen
+    </button>
+    <div class="slide-counter">
+        <i class="fas fa-file-powerpoint"></i> 
+        <span id="current">1</span> / <span id="total">11</span>
+    </div>
+
+    <div class="keyboard-hint">
+        Use <kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to navigate | <kbd>F</kbd> for fullscreen | <kbd>Click</kbd> elements for more info
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeInfoPanel()"></div>
+
+    <!-- Info Panel -->
+    <div class="info-panel" id="infoPanel">
+        <div class="info-panel-header">
+            <h3 id="infoPanelTitle"><i class="fas fa-info-circle"></i> Information</h3>
+            <button class="info-panel-close" onclick="closeInfoPanel()">×</button>
+        </div>
+        <div class="info-panel-content" id="infoPanelContent">
+            <!-- Content will be dynamically inserted -->
+        </div>
+    </div>
+
+    <div class="presentation">
+        <!-- Floating decorative elements -->
+        <div class="floating-burger" style="top: 10%; left: 5%;">🍔</div>
+        <div class="floating-fries" style="top: 60%; right: 3%;">🍟</div>
+        <div class="floating-burger" style="bottom: 15%; left: 8%;">🍔</div>
+
+        <!-- SLIDE 1 - Title -->
+        <div class="slide slide-1 active">
+            <div class="mcd-logo animate-glowPulse">M</div>
+            <div class="left-panel animate-fadeInLeft">
+                <img src="images/golden_arches.png" alt="McDonald's Golden Arches" class="clickable" data-info="mcdonalds-intro" style="max-width: 400px; filter: drop-shadow(0 0 40px rgba(255,199,44,0.9));">
+            </div>
+            <div class="right-panel">
+                <h1 class="animate-fadeInRight delay-1">BUSINESS<br>FORMAT<br>FRANCHISING</h1>
+                <div class="gold-bar animate-fadeInRight delay-2"></div>
+                <p class="subtitle animate-fadeInRight delay-3 clickable" data-info="franchising-def">The McDonald's Success Story</p>
+                <p class="author animate-fadeInUp delay-4">
+                    <i class="fas fa-user-graduate"></i> Leon Kreso<br>
+                    <i class="fas fa-university"></i> University of Rijeka<br>
+                    <i class="fas fa-building"></i> Faculty of Tourism and Hospitality Management
+                </p>
+            </div>
+            <!-- Image Gallery -->
+            <div class="image-gallery" style="position: absolute; bottom: 20px; left: 60px; right: 60px;">
+                <div class="gallery-item animate-fadeInUp delay-5 clickable" data-info="mcdonalds-history">
+                    <img src="images/mcdonalds_burger.jpg" alt="McDonald's Big Mac" style="width:100%; height:100px; object-fit:cover; border-radius: 15px;">
+                    <div class="gallery-overlay">Big Mac</div>
+                </div>
+                <div class="gallery-item animate-fadeInUp delay-6 clickable" data-info="mcdonalds-menu">
+                    <img src="images/mcfries.jpg" alt="McDonald's Fries" style="width:100%; height:100px; object-fit:cover; border-radius: 15px;">
+                    <div class="gallery-overlay">Golden Fries</div>
+                </div>
+                <div class="gallery-item animate-fadeInUp delay-7 clickable" data-info="mcdonalds-global">
+                    <img src="images/McDonalds-2 Cropped.jpg" alt="McDonald's Restaurant" style="width:100%; height:100px; object-fit:cover; border-radius: 15px;">
+                    <div class="gallery-overlay">Restaurant</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 - What is Franchising -->
+        <div class="slide slide-2">
+            <div class="number animate-popIn">01</div>
+            <div class="content">
+                <h2 class="animate-fadeInLeft delay-1">WHAT IS FRANCHISING?</h2>
+                <div class="divider animate-fadeInLeft delay-2"></div>
+                <div class="point animate-fadeInRight delay-2 hover-lift clickable" data-info="strategic-growth">
+                    <i class="fas fa-chart-line"></i> Strategic Growth Option
+                </div>
+                <div class="point animate-fadeInRight delay-3 hover-lift clickable" data-info="shared-brand">
+                    <i class="fas fa-id-badge"></i> Shared Brand & Identity
+                </div>
+                <div class="point animate-fadeInRight delay-4 hover-lift clickable" data-info="proven-model">
+                    <i class="fas fa-check-circle"></i> Proven Business Model
+                </div>
+                <div class="point animate-fadeInRight delay-5 hover-lift clickable" data-info="lower-risk">
+                    <i class="fas fa-shield-alt"></i> Lower Risk Entry
+                </div>
+            </div>
+            <!-- Side image -->
+            <div style="position: absolute; right: 60px; bottom: 60px; width: 350px;" class="animate-fadeInRight delay-6">
+                <img src="images/McDonalds-2 Cropped.jpg" alt="McDonald's Restaurant" class="clickable" data-info="franchise-example" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+            </div>
+        </div>
+
+        <!-- SLIDE 3 - Business Format -->
+        <div class="slide slide-3">
+            <h2 class="animate-fadeInUp">02 &nbsp; BUSINESS FORMAT FRANCHISING</h2>
+            <div class="diagram">
+                <div class="center-circle animate-zoomIn delay-1 clickable" data-info="complete-system">
+                    <i class="fas fa-cogs"></i><br>COMPLETE<br>SYSTEM
+                </div>
+                <div class="element animate-popIn delay-2 hover-lift clickable" data-info="brand-element"><i class="fas fa-trademark"></i> BRAND</div>
+                <div class="element animate-popIn delay-2 hover-lift clickable" data-info="training-element"><i class="fas fa-chalkboard-teacher"></i> TRAINING</div>
+                <div class="element animate-popIn delay-3 hover-lift clickable" data-info="marketing-element"><i class="fas fa-bullhorn"></i> MARKETING</div>
+                <div class="element animate-popIn delay-3 hover-lift clickable" data-info="standards-element"><i class="fas fa-clipboard-check"></i> STANDARDS</div>
+                <div class="element animate-popIn delay-4 hover-lift clickable" data-info="support-element"><i class="fas fa-hands-helping"></i> SUPPORT</div>
+                <div class="element animate-popIn delay-4 hover-lift clickable" data-info="knowhow-element"><i class="fas fa-lightbulb"></i> KNOW-HOW</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4 - McDonald's Story -->
+        <div class="slide slide-4">
+            <h2 class="animate-fadeInUp">03 &nbsp; THE McDONALD'S STORY 🍟</h2>
+            <div class="timeline-container">
+                <div class="timeline-image animate-zoomIn delay-1 clickable" data-info="mcdonalds-founding">
+                    <img src="images/McDonalds-2 Cropped.jpg" alt="McDonald's Restaurant" style="width: 100%; height: 200px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                </div>
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-point animate-fadeInUp delay-2 clickable" data-info="year-1940">
+                        <div class="year">1940</div>
+                        <div class="dot"></div>
+                        <div class="desc">First Restaurant</div>
+                    </div>
+                    <div class="timeline-point animate-fadeInUp delay-3 clickable" data-info="year-1948">
+                        <div class="year">1948</div>
+                        <div class="dot"></div>
+                        <div class="desc">Speedee System</div>
+                    </div>
+                    <div class="timeline-point animate-fadeInUp delay-4 clickable" data-info="year-1955">
+                        <div class="year">1955</div>
+                        <div class="dot"></div>
+                        <div class="desc">Ray Kroc Era</div>
+                    </div>
+                    <div class="timeline-point animate-fadeInUp delay-5 clickable" data-info="year-today">
+                        <div class="year">TODAY</div>
+                        <div class="dot"></div>
+                        <div class="desc">40,000+ Locations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5 - Ray Kroc -->
+        <div class="slide slide-5">
+            <div class="left-dark">
+                <div class="number animate-fadeInUp">04</div>
+                <h2 class="animate-fadeInLeft delay-1">RAY KROC</h2>
+                <p class="subtitle animate-fadeInLeft delay-2">The Man Who Built an Empire</p>
+                <div class="ray-image animate-zoomIn delay-3 clickable" data-info="ray-kroc-bio">
+                    <img src="images/raz kroc.webp" alt="Ray Kroc" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid #FFC72C;">
+                </div>
+            </div>
+            <div class="right-content">
+                <p class="quote animate-fadeInUp delay-2 clickable" data-info="qscv-philosophy">Quality, Service,<br>Cleanliness & Value</p>
+                <div class="fact animate-fadeInRight delay-3 hover-lift clickable" data-info="multimixer-story">
+                    <i class="fas fa-blender"></i> Multimixer Salesman
+                </div>
+                <div class="fact animate-fadeInRight delay-4 hover-lift clickable" data-info="first-franchise-story">
+                    <i class="fas fa-store"></i> First Franchise: 1955
+                </div>
+                <div class="fact animate-fadeInRight delay-5 hover-lift clickable" data-info="hamburger-university">
+                    <i class="fas fa-graduation-cap"></i> Hamburger University: 1961
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6 - Building Golden Arches -->
+        <div class="slide slide-6">
+            <div class="pillars">
+                <h2 class="animate-fadeInUp">05 &nbsp; BUILDING<br>THE GOLDEN ARCHES</h2>
+                <div class="pillar animate-slideInRotate delay-1 hover-lift clickable" data-info="consistency-pillar">
+                    <i class="fas fa-sync-alt"></i> CONSISTENCY
+                </div>
+                <div class="pillar animate-slideInRotate delay-2 hover-lift clickable" data-info="recognizability-pillar">
+                    <i class="fas fa-eye"></i> RECOGNIZABILITY
+                </div>
+                <div class="pillar animate-slideInRotate delay-3 hover-lift clickable" data-info="cleanliness-pillar">
+                    <i class="fas fa-broom"></i> CLEANLINESS
+                </div>
+                <div class="pillar animate-slideInRotate delay-4 hover-lift clickable" data-info="affordability-pillar">
+                    <i class="fas fa-tags"></i> AFFORDABILITY
+                </div>
+            </div>
+            <div class="slogan-area">
+                <div class="arches animate-zoomIn delay-2 animate-morphing" style="width: 200px; height: 200px; background: var(--mcd-red); display: flex; align-items: center; justify-content: center; font-size: 5rem;">🍔</div>
+                <p class="slogan animate-bounce delay-3 clickable" data-info="im-lovin-it">i'm lovin' it ™</p>
+                <p class="slogan-info animate-fadeInUp delay-4">
+                    <i class="fas fa-calendar-alt"></i> Launched 2003 - Munich
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 7 - Franchise Model -->
+        <div class="slide slide-7">
+            <h2 class="animate-fadeInUp">06 &nbsp; THE FRANCHISE MODEL</h2>
+            <div class="model-row">
+                <div class="model-box franchisor animate-fadeInLeft delay-1 hover-lift clickable" data-info="franchisor-role">
+                    <h3><i class="fas fa-building"></i> FRANCHISOR</h3>
+                    <ul>
+                        <li>Brand & Trademark</li>
+                        <li>Site Selection</li>
+                        <li>Quality Standards</li>
+                        <li>Marketing</li>
+                    </ul>
+                </div>
+                <div class="arrow animate-zoomIn delay-2">⟷</div>
+                <div class="model-box franchisee animate-fadeInRight delay-1 hover-lift clickable" data-info="franchisee-role">
+                    <h3><i class="fas fa-user-tie"></i> FRANCHISEE</h3>
+                    <ul>
+                        <li>Daily Operations</li>
+                        <li>Staff Management</li>
+                        <li>Customer Service</li>
+                        <li>Local Execution</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-box animate-flipIn delay-3 hover-lift clickable" data-info="advertising-fund">
+                    <div class="value">4%</div>
+                    <div class="label"><i class="fas fa-ad"></i> Advertising Fund</div>
+                </div>
+                <div class="stat-box animate-flipIn delay-4 hover-lift clickable" data-info="own-capital">
+                    <div class="value">25-30%</div>
+                    <div class="label"><i class="fas fa-piggy-bank"></i> Own Capital</div>
+                </div>
+                <div class="stat-box animate-flipIn delay-5 hover-lift clickable" data-info="training-period">
+                    <div class="value">1 YEAR</div>
+                    <div class="label"><i class="fas fa-user-graduate"></i> Training Period</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8 - Global Empire -->
+        <div class="slide slide-8">
+            <h2 class="animate-fadeInUp">07 &nbsp; GLOBAL EMPIRE 🌍</h2>
+            <div class="stats-main">
+                <div class="big-stat animate-zoomIn delay-1 clickable" data-info="global-stats">
+                    <div class="number">40,000+</div>
+                    <div class="label">RESTAURANTS WORLDWIDE</div>
+                </div>
+                <div class="side-stats">
+                    <div class="side-stat animate-fadeInRight delay-2 clickable" data-info="countries-info">
+                        100+ COUNTRIES <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="side-stat animate-fadeInRight delay-3 clickable" data-info="daily-customers">
+                        69M+ DAILY <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="moscow-section animate-fadeInUp delay-4 clickable" data-info="moscow-opening">
+                <div class="moscow-image">
+                    <img src="images/globe.jpg" alt="Global McDonald's" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="moscow-text">
+                    <h3><i class="fas fa-landmark"></i> MOSCOW 1990</h3>
+                    <p>First McDonald's in Russia<br>30,000+ guests served on opening day<br>Fall of Iron Curtain opened new markets</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9 - Key Takeaways -->
+        <div class="slide slide-9">
+            <h2 class="animate-fadeInUp">08 &nbsp; KEY TAKEAWAYS 💡</h2>
+            <div class="takeaways">
+                <div class="takeaway animate-fadeInLeft delay-1 clickable" data-info="takeaway-standardization">
+                    <i class="fas fa-balance-scale"></i>
+                    <div class="num">1</div>
+                    <div class="text">STANDARDIZATION = Consistent Experience</div>
+                </div>
+                <div class="takeaway animate-fadeInRight delay-2 clickable" data-info="takeaway-brand">
+                    <i class="fas fa-heart"></i>
+                    <div class="num">2</div>
+                    <div class="text">STRONG BRAND = Customer Trust</div>
+                </div>
+                <div class="takeaway animate-fadeInLeft delay-3 clickable" data-info="takeaway-support">
+                    <i class="fas fa-life-ring"></i>
+                    <div class="num">3</div>
+                    <div class="text">SUPPORT SYSTEM = Lower Risk</div>
+                </div>
+                <div class="takeaway animate-fadeInRight delay-4 clickable" data-info="takeaway-autonomy">
+                    <i class="fas fa-lock"></i>
+                    <div class="num">4</div>
+                    <div class="text">LIMITED AUTONOMY = High Security</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10 - Movie -->
+        <div class="slide slide-10">
+            <div class="poster animate-fadeInLeft hover-lift clickable" data-info="founder-movie">
+                <img src="images/founder movie.webp" alt="The Founder Movie" style="width:250px; height:350px; border-radius:15px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); object-fit: cover;">
+            </div>
+            <div class="movie-info">
+                <h2 class="animate-fadeInUp">09 &nbsp; RECOMMENDED VIEWING 🎬</h2>
+                <p class="movie-title animate-fadeInRight delay-1 clickable" data-info="movie-details">THE TRUE STORY OF RAY KROC</p>
+                <p class="movie-desc animate-fadeInRight delay-2">
+                    <strong><i class="fas fa-star"></i> Starring: Michael Keaton</strong><br><br>
+                    This biographical drama tells how Ray Kroc transformed McDonald's from a small burger joint into a global empire.<br><br>
+                    <i class="fas fa-graduation-cap"></i> A must-watch for business students!
+                </p>
+                <div class="movie-quote animate-fadeInUp delay-3 clickable" data-info="ray-kroc-quotes">
+                    "Persistence. Nothing can take its place." - Ray Kroc
+                </div>
+                <div class="rating animate-fadeInUp delay-4">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11 - Thank You -->
+        <div class="slide slide-11">
+            <div class="thank-band animate-fadeInUp">
+                <h1>THANK YOU 🙏</h1>
+            </div>
+            <div class="gold-line animate-fadeInUp delay-1"></div>
+            <p class="questions animate-fadeInUp delay-2">
+                <i class="fas fa-question-circle"></i> Any Questions?
+            </p>
+            <p class="author animate-fadeInUp delay-3">
+                <i class="fas fa-user"></i> Leon Kreso &nbsp;|&nbsp; 
+                <i class="fas fa-university"></i> University of Rijeka &nbsp;|&nbsp; 
+                <i class="fas fa-building"></i> FTHM
+            </p>
+            <div class="social-icons animate-fadeInUp delay-4">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <button onclick="prevSlide()"><i class="fas fa-arrow-left"></i> Previous</button>
+        <button onclick="nextSlide()">Next <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+
+        // Info Panel Content Database
+        const infoContent = {
+            // Slide 1
+            'mcdonalds-intro': {
+                title: '🍔 McDonald\'s Corporation',
+                content: `
+                    <img src="images/logo.png" alt="McDonald's Logo" style="width:100%; max-height:150px; object-fit:contain; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(255,199,44,0.5));">
+                    <p>McDonald's Corporation is the world's largest chain of hamburger fast food restaurants, serving approximately 69 million customers daily in over 100 countries.</p>
+                    <div class="highlight">
+                        <i class="fas fa-lightbulb"></i> Fun Fact: McDonald's serves 75 burgers every second!
+                    </div>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">1955</div>
+                            <div class="label">Founded</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">$21B+</div>
+                            <div class="label">Revenue</div>
+                        </div>
+                    </div>
+                `
+            },
+            'franchising-def': {
+                title: '📋 What is Business Format Franchising?',
+                content: `
+                    <p>Business format franchising is a comprehensive system where the franchisor provides not just a product or service, but an entire business concept including:</p>
+                    <ul>
+                        <li><i class="fas fa-trademark"></i> Brand name and trademark</li>
+                        <li><i class="fas fa-book"></i> Operating systems and procedures</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Training programs</li>
+                        <li><i class="fas fa-bullhorn"></i> Marketing support</li>
+                        <li><i class="fas fa-tools"></i> Ongoing assistance</li>
+                    </ul>
+                    <div class="highlight">
+                        McDonald's is the gold standard of business format franchising, with over 93% of restaurants being franchised!
+                    </div>
+                `
+            },
+            'mcdonalds-history': {
+                title: '📜 McDonald\'s History',
+                content: `
+                    <img src="images/mcdonalds_burger.jpg" alt="McDonald's Big Mac" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <p>The McDonald brothers, Richard and Maurice, opened their first restaurant in 1940 in San Bernardino, California.</p>
+                    <p>In 1948, they introduced the "Speedee Service System" - the foundation of modern fast food.</p>
+                    <div class="highlight">
+                        The original menu featured just 9 items, with hamburgers costing only 15 cents!
+                    </div>
+                `
+            },
+            'mcdonalds-menu': {
+                title: '🍟 The Golden Menu',
+                content: `
+                    <img src="images/mcfries.jpg" alt="McDonald's Fries" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <p>McDonald's famous golden fries are one of the most recognized food items in the world.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Cut from real potatoes</li>
+                        <li><i class="fas fa-check"></i> Cooked in vegetable oil</li>
+                        <li><i class="fas fa-check"></i> Lightly salted for perfect taste</li>
+                    </ul>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">9M+</div>
+                            <div class="label">Pounds of fries daily</div>
+                        </div>
+                    </div>
+                `
+            },
+            'mcdonalds-global': {
+                title: '🌍 Golden Arches Worldwide',
+                content: `
+                    <img src="images/McDonalds-2 Cropped.jpg" alt="McDonald's Restaurant" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <p>The Golden Arches are one of the most recognized symbols in the world - even more recognized than the Christian cross!</p>
+                    <div class="highlight">
+                        The "M" was designed by architect Stanley Clark Meston in 1952.
+                    </div>
+                    <p>It represents the arches that were part of the original restaurant building design.</p>
+                `
+            },
+            // Slide 2
+            'strategic-growth': {
+                title: '📈 Strategic Growth Option',
+                content: `
+                    <p>Franchising allows companies to expand rapidly without the need for large capital investments.</p>
+                    <ul>
+                        <li><i class="fas fa-rocket"></i> Faster expansion than company-owned outlets</li>
+                        <li><i class="fas fa-dollar-sign"></i> Franchisees provide capital for new locations</li>
+                        <li><i class="fas fa-users"></i> Local entrepreneurs bring market knowledge</li>
+                        <li><i class="fas fa-chart-line"></i> Reduced financial risk for the franchisor</li>
+                    </ul>
+                    <div class="highlight">
+                        McDonald's expanded from 1 to 40,000+ locations largely through franchising!
+                    </div>
+                `
+            },
+            'shared-brand': {
+                title: '🏷️ Shared Brand & Identity',
+                content: `
+                    <p>Franchisees benefit from instant brand recognition, while the franchisor maintains brand consistency worldwide.</p>
+                    <ul>
+                        <li><i class="fas fa-paint-brush"></i> Uniform visual identity</li>
+                        <li><i class="fas fa-ad"></i> National/global advertising</li>
+                        <li><i class="fas fa-heart"></i> Customer loyalty transfer</li>
+                        <li><i class="fas fa-shield-alt"></i> Established reputation</li>
+                    </ul>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">96%</div>
+                            <div class="label">Brand Recognition</div>
+                        </div>
+                    </div>
+                `
+            },
+            'proven-model': {
+                title: '✅ Proven Business Model',
+                content: `
+                    <p>Franchisees receive a tried-and-tested business system that has been refined over decades.</p>
+                    <ul>
+                        <li><i class="fas fa-clipboard-list"></i> Operational procedures</li>
+                        <li><i class="fas fa-utensils"></i> Menu and recipes</li>
+                        <li><i class="fas fa-store"></i> Store layout designs</li>
+                        <li><i class="fas fa-users-cog"></i> Staff management systems</li>
+                    </ul>
+                    <div class="highlight">
+                        The "McDonald's System" is studied in business schools worldwide!
+                    </div>
+                `
+            },
+            'lower-risk': {
+                title: '🛡️ Lower Risk Entry',
+                content: `
+                    <p>Starting a franchise is generally less risky than starting an independent business.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">90%</div>
+                            <div class="label">Franchise Success Rate</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">20%</div>
+                            <div class="label">Indie Success Rate</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Proven concept reduces uncertainty</li>
+                        <li><i class="fas fa-hands-helping"></i> Training and support provided</li>
+                        <li><i class="fas fa-chart-line"></i> Known market demand</li>
+                    </ul>
+                `
+            },
+            'franchise-example': {
+                title: '🏪 A McDonald\'s Franchise',
+                content: `
+                    <img src="images/McDonalds-2 Cropped.jpg" alt="McDonald's Franchise" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <p>A typical McDonald's franchise costs between $1-2.2 million to open, including:</p>
+                    <ul>
+                        <li><i class="fas fa-file-signature"></i> Initial franchise fee: $45,000</li>
+                        <li><i class="fas fa-building"></i> Equipment and decor</li>
+                        <li><i class="fas fa-user-graduate"></i> Training costs</li>
+                        <li><i class="fas fa-dollar-sign"></i> Working capital</li>
+                    </ul>
+                    <div class="highlight">
+                        Average McDonald's franchise earns $150,000-200,000 annually in profit!
+                    </div>
+                `
+            },
+            // Slide 3
+            'complete-system': {
+                title: '⚙️ The Complete System',
+                content: `
+                    <p>Business format franchising provides everything needed to run a successful business:</p>
+                    <ul>
+                        <li><i class="fas fa-trademark"></i> <strong>Brand:</strong> Instant recognition</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> <strong>Training:</strong> Comprehensive programs</li>
+                        <li><i class="fas fa-bullhorn"></i> <strong>Marketing:</strong> National campaigns</li>
+                        <li><i class="fas fa-clipboard-check"></i> <strong>Standards:</strong> Quality control</li>
+                        <li><i class="fas fa-hands-helping"></i> <strong>Support:</strong> Ongoing assistance</li>
+                        <li><i class="fas fa-lightbulb"></i> <strong>Know-How:</strong> Proprietary systems</li>
+                    </ul>
+                `
+            },
+            'brand-element': {
+                title: '🏷️ Brand',
+                content: `
+                    <p>The brand is the most valuable asset in franchising. McDonald's Golden Arches are recognized by 96% of the world's population.</p>
+                    <div class="highlight">
+                        McDonald's brand is valued at over $45 billion!
+                    </div>
+                `
+            },
+            'training-element': {
+                title: '🎓 Training',
+                content: `
+                    <p>McDonald's operates "Hamburger University" with campuses worldwide, where franchisees and managers receive extensive training.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">275K+</div>
+                            <div class="label">Graduates</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">1961</div>
+                            <div class="label">Founded</div>
+                        </div>
+                    </div>
+                `
+            },
+            'marketing-element': {
+                title: '📢 Marketing',
+                content: `
+                    <p>McDonald's spends approximately $2 billion annually on advertising worldwide.</p>
+                    <ul>
+                        <li><i class="fas fa-tv"></i> TV commercials</li>
+                        <li><i class="fas fa-mobile-alt"></i> Digital marketing</li>
+                        <li><i class="fas fa-gift"></i> Promotions (Happy Meal, McRib)</li>
+                        <li><i class="fas fa-handshake"></i> Sponsorships</li>
+                    </ul>
+                `
+            },
+            'standards-element': {
+                title: '📋 Standards',
+                content: `
+                    <p>McDonald's maintains strict quality standards worldwide to ensure consistency.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Food safety protocols</li>
+                        <li><i class="fas fa-check"></i> Service time targets</li>
+                        <li><i class="fas fa-check"></i> Cleanliness standards</li>
+                        <li><i class="fas fa-check"></i> Employee appearance</li>
+                    </ul>
+                `
+            },
+            'support-element': {
+                title: '🤝 Support',
+                content: `
+                    <p>Franchisees receive ongoing support including:</p>
+                    <ul>
+                        <li><i class="fas fa-user-tie"></i> Field consultants</li>
+                        <li><i class="fas fa-phone"></i> 24/7 helplines</li>
+                        <li><i class="fas fa-laptop"></i> Technology systems</li>
+                        <li><i class="fas fa-truck"></i> Supply chain management</li>
+                    </ul>
+                `
+            },
+            'knowhow-element': {
+                title: '💡 Know-How',
+                content: `
+                    <p>McDonald's proprietary systems and processes have been refined over 70+ years.</p>
+                    <div class="highlight">
+                        The operations manual is over 750 pages covering every aspect of running a restaurant!
+                    </div>
+                `
+            },
+            // Slide 4 - Timeline
+            'mcdonalds-founding': {
+                title: '🏠 The Founding Story',
+                content: `
+                    <img src="images/McDonalds-2 Cropped.jpg" alt="McDonald's Restaurant" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <p>Richard and Maurice McDonald opened their first drive-in restaurant in 1940 in San Bernardino, California.</p>
+                    <p>The brothers revolutionized the restaurant industry with their innovative "Speedee Service System."</p>
+                `
+            },
+            'year-1940': {
+                title: '📅 1940 - The Beginning',
+                content: `
+                    <p>The McDonald brothers opened their first restaurant called "McDonald's Bar-B-Q" in San Bernardino, California.</p>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Location: San Bernardino, CA</li>
+                        <li><i class="fas fa-utensils"></i> Menu: BBQ items, burgers</li>
+                        <li><i class="fas fa-car"></i> Format: Drive-in with carhops</li>
+                    </ul>
+                `
+            },
+            'year-1948': {
+                title: '⚡ 1948 - Speedee Service System',
+                content: `
+                    <p>The brothers closed their restaurant for 3 months to completely redesign it with the revolutionary "Speedee Service System."</p>
+                    <div class="highlight">
+                        Key innovations:
+                        <ul>
+                            <li>Assembly line food production</li>
+                            <li>Self-service (no carhops)</li>
+                            <li>Limited menu (9 items)</li>
+                            <li>15-cent hamburgers</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'year-1955': {
+                title: '🚀 1955 - Ray Kroc Era Begins',
+                content: `
+                    <p>Ray Kroc opened his first McDonald's franchise in Des Plaines, Illinois, launching the global expansion.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">$950</div>
+                            <div class="label">First Day Sales</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">$2.7M</div>
+                            <div class="label">Buyout Price (1961)</div>
+                        </div>
+                    </div>
+                `
+            },
+            'year-today': {
+                title: '🌍 Today - Global Empire',
+                content: `
+                    <p>McDonald's has grown into the world's largest restaurant chain.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">40,000+</div>
+                            <div class="label">Restaurants</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">100+</div>
+                            <div class="label">Countries</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">69M</div>
+                            <div class="label">Daily Customers</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">$21B</div>
+                            <div class="label">Annual Revenue</div>
+                        </div>
+                    </div>
+                `
+            },
+            // Slide 5 - Ray Kroc
+            'ray-kroc-bio': {
+                title: '👤 Ray Kroc - Biography',
+                content: `
+                    <img src="images/businessman.jpg" alt="Ray Kroc" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <p><strong>Raymond Albert Kroc</strong> (1902-1984) transformed McDonald's from a single restaurant into a global empire.</p>
+                    <ul>
+                        <li><i class="fas fa-birthday-cake"></i> Born: October 5, 1902, Oak Park, IL</li>
+                        <li><i class="fas fa-briefcase"></i> Career: Salesman for 35 years before McDonald's</li>
+                        <li><i class="fas fa-trophy"></i> Forbes 400 member</li>
+                        <li><i class="fas fa-baseball-ball"></i> Owner of San Diego Padres (1974)</li>
+                    </ul>
+                `
+            },
+            'qscv-philosophy': {
+                title: '⭐ QSC&V Philosophy',
+                content: `
+                    <p>Ray Kroc's guiding principle that still drives McDonald's today:</p>
+                    <ul>
+                        <li><i class="fas fa-medal" style="color: gold;"></i> <strong>Quality:</strong> Best ingredients and preparation</li>
+                        <li><i class="fas fa-bolt" style="color: gold;"></i> <strong>Service:</strong> Fast, friendly, accurate</li>
+                        <li><i class="fas fa-sparkles" style="color: gold;"></i> <strong>Cleanliness:</strong> Spotless restaurants</li>
+                        <li><i class="fas fa-dollar-sign" style="color: gold;"></i> <strong>Value:</strong> Fair prices for quality</li>
+                    </ul>
+                    <div class="highlight">
+                        "If you've got time to lean, you've got time to clean!" - Ray Kroc
+                    </div>
+                `
+            },
+            'multimixer-story': {
+                title: '🥤 The Multimixer Story',
+                content: `
+                    <p>Ray Kroc was a milkshake machine salesman when he discovered McDonald's.</p>
+                    <p>In 1954, he wondered why a small restaurant in San Bernardino needed EIGHT of his Multimixers when most restaurants only needed one or two.</p>
+                    <div class="highlight">
+                        He visited the McDonald brothers and was amazed by their efficient system. The rest is history!
+                    </div>
+                `
+            },
+            'first-franchise-story': {
+                title: '🏪 First Franchise - 1955',
+                content: `
+                    <p>Ray Kroc opened his first McDonald's franchise in Des Plaines, Illinois on April 15, 1955.</p>
+                    <ul>
+                        <li><i class="fas fa-calendar"></i> Date: April 15, 1955</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Location: Des Plaines, IL</li>
+                        <li><i class="fas fa-dollar-sign"></i> First day sales: $366.12</li>
+                    </ul>
+                    <div class="highlight">
+                        This location is now a museum! Visit it at 400 N Lee St, Des Plaines.
+                    </div>
+                `
+            },
+            'hamburger-university': {
+                title: '🎓 Hamburger University',
+                content: `
+                    <p>Founded in 1961 in the basement of a McDonald's in Elk Grove Village, Illinois.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">7</div>
+                            <div class="label">Campuses Worldwide</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">275K+</div>
+                            <div class="label">Graduates</div>
+                        </div>
+                    </div>
+                    <p>Locations: Oak Brook (HQ), Tokyo, London, Sydney, Munich, São Paulo, Shanghai</p>
+                `
+            },
+            // Slide 6 - Pillars
+            'consistency-pillar': {
+                title: '🔄 Consistency',
+                content: `
+                    <p>A Big Mac tastes the same whether you're in Tokyo, Paris, or New York!</p>
+                    <ul>
+                        <li><i class="fas fa-book"></i> Standardized recipes worldwide</li>
+                        <li><i class="fas fa-thermometer-half"></i> Exact cooking temperatures</li>
+                        <li><i class="fas fa-balance-scale"></i> Precise ingredient portions</li>
+                        <li><i class="fas fa-clipboard-check"></i> Regular quality audits</li>
+                    </ul>
+                `
+            },
+            'recognizability-pillar': {
+                title: '👁️ Recognizability',
+                content: `
+                    <p>The Golden Arches are one of the most recognized symbols in the world.</p>
+                    <div class="highlight">
+                        96% of American children can identify Ronald McDonald - second only to Santa Claus!
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-paint-brush"></i> Consistent branding</li>
+                        <li><i class="fas fa-building"></i> Recognizable architecture</li>
+                        <li><i class="fas fa-smile"></i> Familiar mascots</li>
+                    </ul>
+                `
+            },
+            'cleanliness-pillar': {
+                title: '🧹 Cleanliness',
+                content: `
+                    <p>Ray Kroc was obsessed with cleanliness - he would personally scrape gum off the parking lot!</p>
+                    <ul>
+                        <li><i class="fas fa-clock"></i> Cleaning schedule every 30 minutes</li>
+                        <li><i class="fas fa-restroom"></i> Restroom checks every hour</li>
+                        <li><i class="fas fa-star"></i> Secret shopper inspections</li>
+                    </ul>
+                    <div class="highlight">
+                        "If you've got time to lean, you've got time to clean!"
+                    </div>
+                `
+            },
+            'affordability-pillar': {
+                title: '💰 Affordability',
+                content: `
+                    <p>McDonald's has always focused on providing value to customers.</p>
+                    <ul>
+                        <li><i class="fas fa-tags"></i> Dollar Menu/Value Menu</li>
+                        <li><i class="fas fa-percent"></i> Regular promotions</li>
+                        <li><i class="fas fa-mobile-alt"></i> App-exclusive deals</li>
+                    </ul>
+                    <div class="highlight">
+                        The original 1948 hamburger cost just 15 cents!
+                    </div>
+                `
+            },
+            'im-lovin-it': {
+                title: '🎵 i\'m lovin\' it™',
+                content: `
+                    <p>Launched in 2003, "i'm lovin' it" is the longest-running McDonald's slogan.</p>
+                    <ul>
+                        <li><i class="fas fa-calendar"></i> Launched: September 2003</li>
+                        <li><i class="fas fa-map-marker-alt"></i> First aired: Munich, Germany</li>
+                        <li><i class="fas fa-music"></i> Jingle composed by Pharrell Williams</li>
+                        <li><i class="fas fa-microphone"></i> Originally sung by Justin Timberlake</li>
+                    </ul>
+                    <div class="highlight">
+                        The "ba da ba ba ba" jingle is recognized in over 120 countries!
+                    </div>
+                `
+            },
+            // Slide 7 - Franchise Model
+            'franchisor-role': {
+                title: '🏢 Franchisor Responsibilities',
+                content: `
+                    <p>McDonald's Corporation (the franchisor) provides:</p>
+                    <ul>
+                        <li><i class="fas fa-trademark"></i> Brand name and trademarks</li>
+                        <li><i class="fas fa-map"></i> Site selection assistance</li>
+                        <li><i class="fas fa-building"></i> Restaurant design/construction</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Training programs</li>
+                        <li><i class="fas fa-bullhorn"></i> National marketing</li>
+                        <li><i class="fas fa-truck"></i> Supply chain management</li>
+                        <li><i class="fas fa-laptop"></i> Technology systems</li>
+                    </ul>
+                `
+            },
+            'franchisee-role': {
+                title: '👔 Franchisee Responsibilities',
+                content: `
+                    <p>McDonald's franchisees are responsible for:</p>
+                    <ul>
+                        <li><i class="fas fa-users"></i> Hiring and managing staff</li>
+                        <li><i class="fas fa-clock"></i> Day-to-day operations</li>
+                        <li><i class="fas fa-smile"></i> Customer service excellence</li>
+                        <li><i class="fas fa-dollar-sign"></i> Financial management</li>
+                        <li><i class="fas fa-clipboard-check"></i> Maintaining standards</li>
+                        <li><i class="fas fa-handshake"></i> Community involvement</li>
+                    </ul>
+                `
+            },
+            'advertising-fund': {
+                title: '📺 4% Advertising Fund',
+                content: `
+                    <p>Franchisees contribute 4% of gross sales to national/regional advertising.</p>
+                    <div class="highlight">
+                        This creates a $2+ billion annual marketing fund!
+                    </div>
+                    <p>Benefits include:</p>
+                    <ul>
+                        <li><i class="fas fa-tv"></i> National TV campaigns</li>
+                        <li><i class="fas fa-mobile-alt"></i> Digital marketing</li>
+                        <li><i class="fas fa-star"></i> Celebrity endorsements</li>
+                        <li><i class="fas fa-futbol"></i> Sports sponsorships</li>
+                    </ul>
+                `
+            },
+            'own-capital': {
+                title: '💵 25-30% Own Capital',
+                content: `
+                    <p>Franchisees must provide 25-30% of the total investment from their own funds (not borrowed).</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">$500K+</div>
+                            <div class="label">Minimum Liquid Cash</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">$2.2M</div>
+                            <div class="label">Total Investment</div>
+                        </div>
+                    </div>
+                    <p>This ensures franchisees are financially committed to success.</p>
+                `
+            },
+            'training-period': {
+                title: '📚 1 Year Training',
+                content: `
+                    <p>McDonald's requires extensive training before opening a franchise:</p>
+                    <ul>
+                        <li><i class="fas fa-store"></i> 9-18 months in a restaurant</li>
+                        <li><i class="fas fa-book"></i> Hamburger University courses</li>
+                        <li><i class="fas fa-laptop"></i> Business management training</li>
+                        <li><i class="fas fa-users"></i> Leadership development</li>
+                    </ul>
+                    <div class="highlight">
+                        Training covers everything from flipping burgers to financial management!
+                    </div>
+                `
+            },
+            // Slide 8 - Global
+            'global-stats': {
+                title: '🌐 40,000+ Restaurants',
+                content: `
+                    <p>McDonald's operates in over 100 countries with 40,000+ locations.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">14,000</div>
+                            <div class="label">USA</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">3,000</div>
+                            <div class="label">Japan</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">1,500</div>
+                            <div class="label">UK</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">1,400</div>
+                            <div class="label">Germany</div>
+                        </div>
+                    </div>
+                `
+            },
+            'countries-info': {
+                title: '🌍 100+ Countries',
+                content: `
+                    <p>McDonald's serves customers on every continent except Antarctica!</p>
+                    <p>Interesting local adaptations:</p>
+                    <ul>
+                        <li><i class="fas fa-hamburger"></i> India: McAloo Tikki (vegetarian)</li>
+                        <li><i class="fas fa-shrimp"></i> Japan: Ebi Filet-O (shrimp burger)</li>
+                        <li><i class="fas fa-cheese"></i> Philippines: McSpaghetti</li>
+                        <li><i class="fas fa-beer"></i> Germany: Beer served!</li>
+                    </ul>
+                `
+            },
+            'daily-customers': {
+                title: '👥 69 Million Daily Customers',
+                content: `
+                    <p>McDonald's serves approximately 69 million customers every single day!</p>
+                    <div class="highlight">
+                        That's almost 1% of the world's entire population visiting McDonald's daily!
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-clock"></i> 75 burgers sold per second</li>
+                        <li><i class="fas fa-coffee"></i> 500M+ cups of coffee annually</li>
+                        <li><i class="fas fa-smile"></i> 2.5 billion Happy Meals yearly</li>
+                    </ul>
+                `
+            },
+            'moscow-opening': {
+                title: '🇷🇺 Moscow 1990',
+                content: `
+                    <div style="width:100%; height:150px; background: linear-gradient(135deg, #DA291C 0%, #8B0000 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <svg width="150" height="120" viewBox="0 0 150 120"><path d="M30,100 L30,40 Q30,15 50,30 L75,55 L100,30 Q120,15 120,40 L120,100" fill="#FFC72C"/><text x="75" y="115" text-anchor="middle" fill="#FFF" font-size="12">MOSCOW 1990</text></svg>
+                    </div>
+                    <p>The opening of McDonald's in Moscow on January 31, 1990 was a historic moment.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">30,000</div>
+                            <div class="label">Customers Day 1</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">700</div>
+                            <div class="label">Seats</div>
+                        </div>
+                    </div>
+                    <p>Lines stretched for blocks, with some waiting over 6 hours!</p>
+                `
+            },
+            'mcdonalds-asia': {
+                title: '🌏 McDonald\'s in Asia',
+                content: `
+                    <p>Asia Pacific is McDonald's fastest-growing region.</p>
+                    <ul>
+                        <li><i class="fas fa-torii-gate"></i> Japan: 3,000+ locations</li>
+                        <li><i class="fas fa-landmark"></i> China: 4,500+ locations</li>
+                        <li><i class="fas fa-om"></i> India: 300+ locations (no beef!)</li>
+                    </ul>
+                    <div class="highlight">
+                        McDonald's China plans to reach 10,000 restaurants by 2028!
+                    </div>
+                `
+            },
+            'mcdonalds-europe': {
+                title: '🇪🇺 McDonald\'s in Europe',
+                content: `
+                    <p>Europe is home to over 9,000 McDonald's restaurants.</p>
+                    <ul>
+                        <li><i class="fas fa-coffee"></i> McCafé originated in Australia but thrived in Europe</li>
+                        <li><i class="fas fa-beer"></i> Some European locations serve beer and wine</li>
+                        <li><i class="fas fa-leaf"></i> Highest percentage of organic ingredients</li>
+                    </ul>
+                `
+            },
+            // Slide 9 - Takeaways
+            'takeaway-standardization': {
+                title: '📋 Standardization',
+                content: `
+                    <p>Standardization is the foundation of successful franchising.</p>
+                    <div class="highlight">
+                        Every Big Mac has exactly 3 pickles, not 2, not 4!
+                    </div>
+                    <p>Benefits:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Consistent customer experience</li>
+                        <li><i class="fas fa-check"></i> Easier training</li>
+                        <li><i class="fas fa-check"></i> Quality control</li>
+                        <li><i class="fas fa-check"></i> Cost efficiency</li>
+                    </ul>
+                `
+            },
+            'takeaway-brand': {
+                title: '❤️ Strong Brand',
+                content: `
+                    <p>A strong brand creates instant trust with customers.</p>
+                    <div class="info-panel-stats">
+                        <div class="info-panel-stat">
+                            <div class="value">$45B</div>
+                            <div class="label">Brand Value</div>
+                        </div>
+                        <div class="info-panel-stat">
+                            <div class="value">#9</div>
+                            <div class="label">Most Valuable Brand</div>
+                        </div>
+                    </div>
+                    <p>Customers know exactly what to expect from McDonald's anywhere in the world.</p>
+                `
+            },
+            'takeaway-support': {
+                title: '🛟 Support System',
+                content: `
+                    <p>Comprehensive support dramatically reduces the risk of business failure.</p>
+                    <ul>
+                        <li><i class="fas fa-user-tie"></i> Dedicated field consultants</li>
+                        <li><i class="fas fa-phone"></i> 24/7 support hotlines</li>
+                        <li><i class="fas fa-laptop"></i> Technology assistance</li>
+                        <li><i class="fas fa-chart-line"></i> Performance analytics</li>
+                    </ul>
+                    <div class="highlight">
+                        McDonald's franchisees have a 90%+ success rate!
+                    </div>
+                `
+            },
+            'takeaway-autonomy': {
+                title: '🔐 Limited Autonomy',
+                content: `
+                    <p>While franchisees have less freedom, this provides security through proven systems.</p>
+                    <ul>
+                        <li><i class="fas fa-times"></i> Cannot change menu items</li>
+                        <li><i class="fas fa-times"></i> Must follow operational procedures</li>
+                        <li><i class="fas fa-times"></i> Limited supplier choices</li>
+                        <li><i class="fas fa-check"></i> But: Proven path to success!</li>
+                    </ul>
+                `
+            },
+            // Slide 10 - Movie
+            'founder-movie': {
+                title: '🎬 The Founder (2016)',
+                content: `
+                    <img src="images/mcdonalds_burger.jpg" alt="The Founder Movie" style="width:100%; height:180px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <ul>
+                        <li><i class="fas fa-user"></i> Director: John Lee Hancock</li>
+                        <li><i class="fas fa-star"></i> Star: Michael Keaton as Ray Kroc</li>
+                        <li><i class="fas fa-calendar"></i> Released: 2016</li>
+                        <li><i class="fas fa-clock"></i> Runtime: 115 minutes</li>
+                        <li><i class="fas fa-thumbs-up"></i> Rotten Tomatoes: 82%</li>
+                    </ul>
+                `
+            },
+            'movie-details': {
+                title: '📽️ Movie Details',
+                content: `
+                    <p>The Founder tells the true story of how Ray Kroc built McDonald's into the world's biggest restaurant empire.</p>
+                    <p>Key cast members:</p>
+                    <ul>
+                        <li><i class="fas fa-user"></i> Michael Keaton as Ray Kroc</li>
+                        <li><i class="fas fa-user"></i> Nick Offerman as Dick McDonald</li>
+                        <li><i class="fas fa-user"></i> John Carroll Lynch as Mac McDonald</li>
+                        <li><i class="fas fa-user"></i> Laura Dern as Ethel Kroc</li>
+                    </ul>
+                `
+            },
+            'ray-kroc-quotes': {
+                title: '💬 Ray Kroc Quotes',
+                content: `
+                    <p>Famous quotes from Ray Kroc:</p>
+                    <div class="highlight">
+                        "Persistence and determination alone are omnipotent."
+                    </div>
+                    <div class="highlight">
+                        "The quality of a leader is reflected in the standards they set for themselves."
+                    </div>
+                    <div class="highlight">
+                        "If you work just for money, you'll never make it. But if you love what you're doing, and always put the customer first, success will be yours."
+                    </div>
+                `
+            }
+        };
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#FFC72C', '#DA291C', '#FFD700'];
+            
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 15 + 5) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Info Panel Functions
+        function openInfoPanel(infoKey) {
+            const panel = document.getElementById('infoPanel');
+            const overlay = document.getElementById('overlay');
+            const title = document.getElementById('infoPanelTitle');
+            const content = document.getElementById('infoPanelContent');
+
+            if (infoContent[infoKey]) {
+                title.innerHTML = infoContent[infoKey].title;
+                content.innerHTML = infoContent[infoKey].content;
+            } else {
+                title.innerHTML = '<i class="fas fa-info-circle"></i> Information';
+                content.innerHTML = '<p>No additional information available.</p>';
+            }
+
+            panel.classList.add('active');
+            overlay.classList.add('active');
+            playClickSound();
+        }
+
+        function closeInfoPanel() {
+            const panel = document.getElementById('infoPanel');
+            const overlay = document.getElementById('overlay');
+            panel.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Add click listeners to all clickable elements
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.clickable').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const infoKey = this.getAttribute('data-info');
+                    if (infoKey) {
+                        openInfoPanel(infoKey);
+                    }
+                });
+            });
+        });
+
+        // Close panel with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeInfoPanel();
+            }
+        });
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                // Reset animations
+                const animated = slide.querySelectorAll('[class*="animate-"]');
+                animated.forEach(el => {
+                    el.style.animation = 'none';
+                    el.offsetHeight; // Trigger reflow
+                    el.style.animation = null;
+                });
+            });
+            
+            slides[currentSlide - 1].classList.add('active');
+            document.getElementById('current').textContent = currentSlide;
+            updateProgressBar();
+
+            // Add slide transition sound effect
+            playSlideSound();
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Sound effects
+        function playSlideSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                gainNode.gain.value = 0.03;
+                
+                oscillator.start();
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {}
+        }
+
+        function playClickSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 1200;
+                oscillator.type = 'sine';
+                gainNode.gain.value = 0.05;
+                
+                oscillator.start();
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.08);
+                oscillator.stop(audioContext.currentTime + 0.08);
+            } catch (e) {}
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            // Don't navigate if info panel is open
+            if (document.getElementById('infoPanel').classList.contains('active')) {
+                if (e.key === 'Escape') closeInfoPanel();
+                return;
+            }
+
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            } else if (e.key === 'Home') {
+                currentSlide = 1;
+                showSlide(currentSlide);
+            } else if (e.key === 'End') {
+                currentSlide = totalSlides;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            // Don't swipe if info panel is open
+            if (document.getElementById('infoPanel').classList.contains('active')) return;
+
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) nextSlide();
+                else prevSlide();
+            }
+        });
+
+        // Mouse wheel navigation
+        let wheelTimeout;
+        document.addEventListener('wheel', (e) => {
+            if (document.getElementById('infoPanel').classList.contains('active')) return;
+            
+            clearTimeout(wheelTimeout);
+            wheelTimeout = setTimeout(() => {
+                if (e.deltaY > 0) nextSlide();
+                else prevSlide();
+            }, 100);
+        }, { passive: true });
+
+        // Auto-hide keyboard hint after 8 seconds
+        setTimeout(() => {
+            const hint = document.querySelector('.keyboard-hint');
+            if (hint) {
+                hint.style.opacity = '0';
+                hint.style.transition = 'opacity 1s ease';
+                setTimeout(() => hint.remove(), 1000);
+            }
+        }, 8000);
+
+        // Initialize
+        createParticles();
+        showSlide(currentSlide);
+        updateProgressBar();
+
+        // Confetti effect on last slide
+        function createConfetti() {
+            if (currentSlide === totalSlides) {
+                const colors = ['#FFC72C', '#DA291C', '#FFD700', '#FFFFFF'];
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.style.cssText = `
+                            position: fixed;
+                            width: ${Math.random() * 10 + 5}px;
+                            height: ${Math.random() * 10 + 5}px;
+                            background: ${colors[Math.floor(Math.random() * colors.length)]};
+                            left: ${Math.random() * 100}%;
+                            top: -10px;
+                            z-index: 1000;
+                            pointer-events: none;
+                            border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                            animation: confettiFall ${Math.random() * 2 + 2}s forwards;
+                        `;
+                        document.body.appendChild(confetti);
+                        setTimeout(() => confetti.remove(), 4000);
+                    }, i * 30);
+                }
+            }
+        }
+
+        // Add confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(100vh) rotate(${Math.random() * 720}deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Trigger confetti when reaching last slide
+        const originalShowSlide = showSlide;
+        showSlide = function(n) {
+            originalShowSlide(n);
+            if (currentSlide === totalSlides) {
+                setTimeout(createConfetti, 500);
+            }
+        };
+
+        // Add sparkle effect on clickable elements
+        document.querySelectorAll('.clickable').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            el.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
+
+

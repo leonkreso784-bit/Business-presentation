@@ -1,0 +1,13 @@
+{
+  "name": "mcdonalds-business-format-franchising",
+  "version": "1.0.0",
+  "description": "McDonald's Business Format Franchising - Interactive HTML Presentation",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": ["mcdonalds", "franchising", "presentation", "business"],
+  "author": "Leon Kreso",
+  "license": "MIT"
+}
