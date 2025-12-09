@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#DA291C">
     <title>Business Format Franchising - McDonald's</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -2208,23 +2211,236 @@
             }
         }
         
-        /* Small phones */
+        /* Small phones & iPhone */
         @media screen and (max-width: 480px) {
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .slide {
+                padding: 15px !important;
+                padding-top: 50px !important;
+                padding-bottom: 80px !important;
+            }
+            
             .slide-1 h1 {
-                font-size: 1.5rem !important;
+                font-size: 1.4rem !important;
+                line-height: 1.3 !important;
             }
             
             .slide-1 .left-panel img {
-                max-width: 140px !important;
+                max-width: 120px !important;
+            }
+            
+            .slide-1 .mcd-logo {
+                font-size: 50px !important;
+                top: 5px !important;
+                right: 5px !important;
+            }
+            
+            .slide-1 .subtitle {
+                font-size: 0.9rem !important;
+            }
+            
+            .slide-1 .author {
+                font-size: 0.75rem !important;
+            }
+            
+            .slide-1 .gold-bar {
+                width: 150px !important;
             }
             
             .slide h2 {
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Hide gallery on very small screens */
+            .slide-1 .image-gallery {
+                display: none !important;
+            }
+            
+            /* Slide 2 */
+            .slide-2 .number {
+                font-size: 40px !important;
+            }
+            
+            .slide-2 .point {
+                padding: 12px !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .slide-2 .point i {
+                font-size: 1rem !important;
+            }
+            
+            /* Slide 3 */
+            .slide-3 .diagram {
+                transform: scale(0.45) !important;
+                margin: -80px 0 !important;
+            }
+            
+            /* Slide 4 */
+            .slide-4 .timeline-image img {
+                height: 120px !important;
+            }
+            
+            .slide-4 .timeline-point .year {
+                font-size: 1rem !important;
+            }
+            
+            .slide-4 .timeline-point .desc {
+                font-size: 0.7rem !important;
+            }
+            
+            /* Slide 5 - Ray Kroc */
+            .slide-5 .number {
+                font-size: 35px !important;
+            }
+            
+            .slide-5 h2 {
+                font-size: 1.2rem !important;
+            }
+            
+            .slide-5 .ray-image img {
+                width: 120px !important;
+                height: 120px !important;
+            }
+            
+            .slide-5 .quote {
+                font-size: 1rem !important;
+            }
+            
+            .slide-5 .fact {
+                padding: 10px 15px !important;
+                font-size: 0.8rem !important;
+            }
+            
+            /* Slide 6-7 */
+            .slide-6 .column h3, .slide-7 h3 {
+                font-size: 1rem !important;
+            }
+            
+            .slide-6 .item, .slide-7 .item {
+                padding: 8px !important;
+                font-size: 0.75rem !important;
+            }
+            
+            /* Slide 8 */
+            .slide-8 .stat-box .number {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-8 .stat-box .label {
+                font-size: 0.7rem !important;
+            }
+            
+            /* Slide 9 */
+            .slide-9 .takeaway {
+                padding: 12px !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .slide-9 .takeaway .num {
+                font-size: 1.2rem !important;
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            /* Slide 10 - Movie */
+            .slide-10 .poster img {
+                width: 140px !important;
+                height: 200px !important;
+            }
+            
+            .slide-10 .movie-title {
+                font-size: 1rem !important;
+            }
+            
+            .slide-10 .movie-desc {
+                font-size: 0.8rem !important;
+            }
+            
+            .slide-10 .movie-quote {
+                font-size: 0.75rem !important;
+                padding: 12px !important;
+            }
+            
+            /* Slide 11 */
+            .slide-11 h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-11 .contact-item {
+                padding: 10px 15px !important;
+                font-size: 0.8rem !important;
+            }
+            
+            /* Navigation */
+            .nav-buttons {
+                bottom: 10px;
+                gap: 8px;
             }
             
             .nav-buttons button {
                 padding: 8px 15px;
-                font-size: 0.75rem;
+                font-size: 0.7rem;
+            }
+            
+            .slide-counter {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+            }
+            
+            .fullscreen-btn {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+            }
+            
+            /* Info panel for iPhone */
+            .info-panel {
+                width: 100% !important;
+                right: -100% !important;
+            }
+            
+            .info-panel.active {
+                right: 0 !important;
+            }
+            
+            .info-panel-header {
+                padding: 20px;
+            }
+            
+            .info-panel-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .info-panel-content {
+                padding: 15px;
+            }
+            
+            .info-panel-content p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* iPhone SE and very small phones */
+        @media screen and (max-width: 375px) {
+            .slide-1 h1 {
+                font-size: 1.2rem !important;
+            }
+            
+            .slide-1 .left-panel img {
+                max-width: 100px !important;
+            }
+            
+            .slide h2 {
+                font-size: 0.95rem !important;
+            }
+            
+            .nav-buttons button {
+                padding: 6px 12px;
+                font-size: 0.65rem;
             }
         }
         
@@ -2248,6 +2464,19 @@
             
             .slide-1 .image-gallery {
                 display: none !important;
+            }
+        }
+        
+        /* Safe area for iPhone X and newer (notch) */
+        @supports (padding: max(0px)) {
+            .slide {
+                padding-left: max(15px, env(safe-area-inset-left));
+                padding-right: max(15px, env(safe-area-inset-right));
+                padding-bottom: max(80px, env(safe-area-inset-bottom));
+            }
+            
+            .nav-buttons {
+                bottom: max(10px, env(safe-area-inset-bottom));
             }
         }
 
@@ -3573,6 +3802,40 @@
         createParticles();
         showSlide(currentSlide);
         updateProgressBar();
+
+        // Touch/Swipe Navigation for Mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            const minSwipeDistance = 50;
+
+            // Only handle horizontal swipes (ignore vertical scrolling)
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+                if (diffX > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+            }
+        }
 
         // Confetti effect on last slide
         function createConfetti() {
