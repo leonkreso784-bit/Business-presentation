@@ -1787,6 +1787,20 @@
         
         .nav button:active {
             transform: scale(0.95);
+            background: var(--mcd-red) !important;
+        }
+
+        /* Mobile button fix */
+        @media (hover: none) and (pointer: coarse) {
+            .nav button {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            .nav button:active {
+                background: var(--mcd-red) !important;
+                transform: scale(0.95) !important;
+            }
         }
 
         .slide-counter {
@@ -2857,8 +2871,8 @@
     </div>
 
     <div class="nav">
-        <button onclick="prevSlide()"><i class="fas fa-arrow-left"></i> Previous</button>
-        <button onclick="nextSlide()">Next <i class="fas fa-arrow-right"></i></button>
+        <button id="prevBtn" type="button"><i class="fas fa-arrow-left"></i> Previous</button>
+        <button id="nextBtn" type="button">Next <i class="fas fa-arrow-right"></i></button>
     </div>
 
     <script>
@@ -3843,13 +3857,24 @@
         let touchStartY = 0;
         let touchEndX = 0;
         let touchEndY = 0;
+        let isTouchOnButton = false;
 
         document.addEventListener('touchstart', function(e) {
+            // Check if touch started on a navigation button
+            const target = e.target;
+            isTouchOnButton = target.closest('.nav button') !== null;
+            
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
 
         document.addEventListener('touchend', function(e) {
+            // Skip swipe handling if touch was on button
+            if (isTouchOnButton) {
+                isTouchOnButton = false;
+                return;
+            }
+            
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
             handleSwipe();
@@ -3928,6 +3953,30 @@
                 this.style.transform = '';
             });
         });
+
+        // Navigation Button Event Listeners (for mobile compatibility)
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                prevSlide();
+            });
+            prevBtn.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            }, { passive: true });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nextSlide();
+            });
+            nextBtn.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            }, { passive: true });
+        }
     </script>
 </body>
 </html>
