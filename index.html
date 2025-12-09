@@ -2923,15 +2923,15 @@
     </div>
 
     <div class="nav">
-        <button id="prevBtn" type="button"><i class="fas fa-arrow-left"></i> Previous</button>
-        <button id="nextBtn" type="button">Next <i class="fas fa-arrow-right"></i></button>
+        <button type="button" onclick="prevSlide()"><i class="fas fa-arrow-left"></i> Previous</button>
+        <button type="button" onclick="nextSlide()">Next <i class="fas fa-arrow-right"></i></button>
     </div>
 
     <!-- Side Navigation Arrows for Mobile -->
-    <div class="side-nav-left" id="sideNavLeft">
+    <div class="side-nav-left" onclick="prevSlide()">
         <i class="fas fa-chevron-left"></i>
     </div>
-    <div class="side-nav-right" id="sideNavRight">
+    <div class="side-nav-right" onclick="nextSlide()">
         <i class="fas fa-chevron-right"></i>
     </div>
 
@@ -3912,51 +3912,6 @@
         showSlide(currentSlide);
         updateProgressBar();
 
-        // Touch/Swipe Navigation for Mobile
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let touchEndY = 0;
-        let isTouchOnButton = false;
-
-        document.addEventListener('touchstart', function(e) {
-            // Check if touch started on a navigation button
-            const target = e.target;
-            isTouchOnButton = target.closest('.nav button') !== null;
-            
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        document.addEventListener('touchend', function(e) {
-            // Skip swipe handling if touch was on button
-            if (isTouchOnButton) {
-                isTouchOnButton = false;
-                return;
-            }
-            
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const diffX = touchStartX - touchEndX;
-            const diffY = touchStartY - touchEndY;
-            const minSwipeDistance = 50;
-
-            // Only handle horizontal swipes (ignore vertical scrolling)
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
-                if (diffX > 0) {
-                    // Swipe left - next slide
-                    nextSlide();
-                } else {
-                    // Swipe right - previous slide
-                    prevSlide();
-                }
-            }
-        }
-
         // Confetti effect on last slide
         function createConfetti() {
             if (currentSlide === totalSlides) {
@@ -4014,53 +3969,11 @@
             });
         });
 
-        // Navigation Button Event Listeners (for mobile compatibility)
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const sideNavLeft = document.getElementById('sideNavLeft');
-        const sideNavRight = document.getElementById('sideNavRight');
+        // Navigation Button Event Listeners removed - using inline onclick instead
         
-        // Use both click and touchend for maximum compatibility
-        function handlePrev(e) {
-            if (e) {
-                e.stopPropagation();
-                e.preventDefault();
-            }
-            prevSlide();
-        }
-        
-        function handleNext(e) {
-            if (e) {
-                e.stopPropagation();
-                e.preventDefault();
-            }
-            nextSlide();
-        }
-        
-        // Bottom buttons
-        if (prevBtn) {
-            prevBtn.addEventListener('click', handlePrev);
-            prevBtn.addEventListener('touchend', handlePrev);
-        }
-        
-        if (nextBtn) {
-            nextBtn.addEventListener('click', handleNext);
-            nextBtn.addEventListener('touchend', handleNext);
-        }
-
-        // Side navigation arrows
-        if (sideNavLeft) {
-            sideNavLeft.addEventListener('click', handlePrev);
-            sideNavLeft.addEventListener('touchend', handlePrev);
-        }
-        
-        if (sideNavRight) {
-            sideNavRight.addEventListener('click', handleNext);
-            sideNavRight.addEventListener('touchend', handleNext);
-        }
-
-        // Debug - log to console when buttons are tapped
-        console.log('Navigation initialized:', { prevBtn, nextBtn, sideNavLeft, sideNavRight });
+        // Debug test - uncomment to verify JS is running
+        // alert('JavaScript loaded successfully!');
+        console.log('Presentation loaded. Functions available:', typeof prevSlide, typeof nextSlide);
     </script>
 </body>
 </html>
