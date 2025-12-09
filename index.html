@@ -1758,13 +1758,14 @@
             transform: translateX(-50%);
             display: flex;
             gap: 20px;
-            z-index: 100;
+            z-index: 9999;
+            pointer-events: auto;
         }
 
         .nav button {
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             color: white;
-            border: 2px solid transparent;
+            border: 2px solid var(--mcd-yellow);
             padding: 18px 30px;
             border-radius: 15px;
             cursor: pointer;
@@ -1772,13 +1773,20 @@
             font-weight: 600;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
-        .nav button:hover {
+        .nav button:hover, .nav button:active {
             background: var(--mcd-red);
             border-color: var(--mcd-yellow);
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(218,41,28,0.4);
+        }
+        
+        .nav button:active {
+            transform: scale(0.95);
         }
 
         .slide-counter {
@@ -1884,56 +1892,73 @@
                 overflow-y: auto;
             }
             
-            /* Slide 1 - Title */
+            /* Slide 1 - Title - MOBILE REDESIGN */
             .slide-1 {
                 flex-direction: column !important;
                 text-align: center;
-                padding-top: 60px;
+                padding: 20px 15px 100px 15px !important;
+                justify-content: flex-start !important;
+                align-items: center !important;
+                gap: 15px !important;
+                background: linear-gradient(180deg, var(--mcd-red) 0%, #8B0000 100%) !important;
             }
             
             .slide-1 .mcd-logo {
-                font-size: 80px !important;
-                top: 10px !important;
-                right: 10px !important;
+                font-size: 60px !important;
+                position: relative !important;
+                top: auto !important;
+                right: auto !important;
+                margin-bottom: 10px;
+                text-shadow: 0 0 30px rgba(255,199,44,0.8);
             }
             
             .slide-1 .left-panel {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
+                order: 1;
             }
             
             .slide-1 .left-panel img {
-                max-width: 180px !important;
+                max-width: 140px !important;
+                filter: drop-shadow(0 0 20px rgba(255,199,44,0.6)) !important;
             }
             
             .slide-1 .right-panel {
-                padding: 0 !important;
+                padding: 0 10px !important;
+                order: 2;
             }
             
             .slide-1 h1 {
-                font-size: 1.8rem !important;
-                line-height: 1.2 !important;
+                font-size: 1.6rem !important;
+                line-height: 1.15 !important;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
+            
+            .slide-1 .gold-bar {
+                width: 120px !important;
+                height: 4px !important;
+                margin: 10px auto !important;
             }
             
             .slide-1 .subtitle {
-                font-size: 1rem !important;
+                font-size: 0.95rem !important;
+                margin-bottom: 15px !important;
             }
             
             .slide-1 .author {
-                font-size: 0.85rem !important;
+                font-size: 0.8rem !important;
+                line-height: 1.6 !important;
+                background: rgba(0,0,0,0.3);
+                padding: 12px 15px;
+                border-radius: 10px;
+            }
+            
+            .slide-1 .author i {
+                color: var(--mcd-yellow);
             }
             
             .slide-1 .image-gallery {
-                position: relative !important;
-                bottom: auto !important;
-                left: auto !important;
-                right: auto !important;
-                margin-top: 20px;
-                flex-direction: column;
-                gap: 10px !important;
-            }
-            
-            .slide-1 .gallery-item {
-                width: 100% !important;
+                display: none !important;
             }
             
             /* Slide 2 - Franchising */
@@ -2168,14 +2193,18 @@
             }
             
             /* Navigation */
-            .nav-buttons {
-                bottom: 10px;
-                gap: 10px;
+            .nav {
+                bottom: 15px !important;
+                gap: 10px !important;
+                z-index: 9999 !important;
             }
             
-            .nav-buttons button {
-                padding: 10px 20px;
-                font-size: 0.8rem;
+            .nav button {
+                padding: 12px 20px !important;
+                font-size: 0.85rem !important;
+                border-radius: 10px !important;
+                min-height: 44px;
+                min-width: 100px;
             }
             
             .slide-counter {
@@ -2376,15 +2405,21 @@
                 font-size: 0.8rem !important;
             }
             
-            /* Navigation */
-            .nav-buttons {
-                bottom: 10px;
-                gap: 8px;
+            /* Navigation - FIXED FOR MOBILE */
+            .nav {
+                bottom: 15px !important;
+                gap: 10px !important;
+                z-index: 9999 !important;
+                pointer-events: auto !important;
             }
             
-            .nav-buttons button {
-                padding: 8px 15px;
-                font-size: 0.7rem;
+            .nav button {
+                padding: 12px 18px !important;
+                font-size: 0.8rem !important;
+                min-height: 48px !important;
+                min-width: 90px !important;
+                pointer-events: auto !important;
+                touch-action: manipulation !important;
             }
             
             .slide-counter {
