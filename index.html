@@ -1758,14 +1758,15 @@
             transform: translateX(-50%);
             display: flex;
             gap: 20px;
-            z-index: 9999;
+            z-index: 99999;
             pointer-events: auto;
+            isolation: isolate;
         }
 
         .nav button {
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             color: white;
-            border: 2px solid var(--mcd-yellow);
+            border: 3px solid var(--mcd-yellow);
             padding: 18px 30px;
             border-radius: 15px;
             cursor: pointer;
@@ -1773,9 +1774,13 @@
             font-weight: 600;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            pointer-events: auto;
-            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto !important;
+            -webkit-tap-highlight-color: rgba(255,199,44,0.3);
             touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
+            position: relative;
+            z-index: 99999;
         }
 
         .nav button:hover, .nav button:active {
@@ -1800,6 +1805,53 @@
             .nav button:active {
                 background: var(--mcd-red) !important;
                 transform: scale(0.95) !important;
+            }
+        }
+
+        /* Side Navigation Arrows - for mobile touch */
+        .side-nav-left,
+        .side-nav-right {
+            display: none; /* Hidden on desktop */
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 120px;
+            background: rgba(0,0,0,0.7);
+            color: var(--mcd-yellow);
+            font-size: 2rem;
+            z-index: 99999;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--mcd-yellow);
+            pointer-events: auto !important;
+            -webkit-tap-highlight-color: rgba(255,199,44,0.5);
+            touch-action: manipulation;
+        }
+
+        .side-nav-left {
+            left: 0;
+            border-radius: 0 15px 15px 0;
+            border-left: none;
+        }
+
+        .side-nav-right {
+            right: 0;
+            border-radius: 15px 0 0 15px;
+            border-right: none;
+        }
+
+        .side-nav-left:active,
+        .side-nav-right:active {
+            background: var(--mcd-red);
+        }
+
+        /* Show side nav on mobile */
+        @media (max-width: 768px) {
+            .side-nav-left,
+            .side-nav-right {
+                display: flex;
             }
         }
 
@@ -2873,6 +2925,14 @@
     <div class="nav">
         <button id="prevBtn" type="button"><i class="fas fa-arrow-left"></i> Previous</button>
         <button id="nextBtn" type="button">Next <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <!-- Side Navigation Arrows for Mobile -->
+    <div class="side-nav-left" id="sideNavLeft">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="side-nav-right" id="sideNavRight">
+        <i class="fas fa-chevron-right"></i>
     </div>
 
     <script>
@@ -3957,26 +4017,50 @@
         // Navigation Button Event Listeners (for mobile compatibility)
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const sideNavLeft = document.getElementById('sideNavLeft');
+        const sideNavRight = document.getElementById('sideNavRight');
         
+        // Use both click and touchend for maximum compatibility
+        function handlePrev(e) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            prevSlide();
+        }
+        
+        function handleNext(e) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            nextSlide();
+        }
+        
+        // Bottom buttons
         if (prevBtn) {
-            prevBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                prevSlide();
-            });
-            prevBtn.addEventListener('touchstart', function(e) {
-                e.stopPropagation();
-            }, { passive: true });
+            prevBtn.addEventListener('click', handlePrev);
+            prevBtn.addEventListener('touchend', handlePrev);
         }
         
         if (nextBtn) {
-            nextBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                nextSlide();
-            });
-            nextBtn.addEventListener('touchstart', function(e) {
-                e.stopPropagation();
-            }, { passive: true });
+            nextBtn.addEventListener('click', handleNext);
+            nextBtn.addEventListener('touchend', handleNext);
         }
+
+        // Side navigation arrows
+        if (sideNavLeft) {
+            sideNavLeft.addEventListener('click', handlePrev);
+            sideNavLeft.addEventListener('touchend', handlePrev);
+        }
+        
+        if (sideNavRight) {
+            sideNavRight.addEventListener('click', handleNext);
+            sideNavRight.addEventListener('touchend', handleNext);
+        }
+
+        // Debug - log to console when buttons are tapped
+        console.log('Navigation initialized:', { prevBtn, nextBtn, sideNavLeft, sideNavRight });
     </script>
 </body>
 </html>
