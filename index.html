@@ -753,11 +753,14 @@
             justify-content: center;
             position: relative;
             z-index: 1;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .slide-3 .center-circle {
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             background: linear-gradient(135deg, var(--mcd-red) 0%, #8B0000 100%);
             border-radius: 50%;
             display: flex;
@@ -766,7 +769,7 @@
             text-align: center;
             color: white;
             font-weight: 900;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             z-index: 2;
             box-shadow: 0 0 60px rgba(218,41,28,0.5);
             animation: pulse 3s infinite;
@@ -775,14 +778,15 @@
         .slide-3 .element {
             position: absolute;
             background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-gold) 100%);
-            padding: 18px 30px;
-            border-radius: 15px;
+            padding: 15px 25px;
+            border-radius: 12px;
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #1a1a1a;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .slide-3 .element:hover {
@@ -791,15 +795,16 @@
         }
 
         .slide-3 .element i {
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
-        .slide-3 .element:nth-child(2) { top: 8%; left: 22%; }
-        .slide-3 .element:nth-child(3) { top: 8%; right: 22%; }
-        .slide-3 .element:nth-child(4) { top: 42%; right: 8%; }
-        .slide-3 .element:nth-child(5) { bottom: 8%; right: 22%; }
-        .slide-3 .element:nth-child(6) { bottom: 8%; left: 22%; }
-        .slide-3 .element:nth-child(7) { top: 42%; left: 8%; }
+        /* Desktop positions - circular layout */
+        .slide-3 .element:nth-child(2) { top: 5%; left: 50%; transform: translateX(-50%); }
+        .slide-3 .element:nth-child(3) { top: 25%; right: 5%; }
+        .slide-3 .element:nth-child(4) { bottom: 25%; right: 5%; }
+        .slide-3 .element:nth-child(5) { bottom: 5%; left: 50%; transform: translateX(-50%); }
+        .slide-3 .element:nth-child(6) { bottom: 25%; left: 5%; }
+        .slide-3 .element:nth-child(7) { top: 25%; left: 5%; }
 
         /* Connection Lines */
         .slide-3 .connection {
@@ -2030,9 +2035,34 @@
                 height: 200px !important;
             }
             
-            /* Slide 3 - Diagram */
+            /* Slide 3 - Diagram - tablet */
             .slide-3 .diagram {
-                transform: scale(0.6) !important;
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 15px !important;
+                padding: 20px !important;
+                transform: none !important;
+            }
+            
+            .slide-3 .center-circle {
+                grid-column: 2 !important;
+                grid-row: 2 !important;
+                width: 140px !important;
+                height: 140px !important;
+                font-size: 1rem !important;
+                margin: 0 auto !important;
+                position: relative !important;
+            }
+            
+            .slide-3 .element {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+                padding: 14px 20px !important;
+                font-size: 0.95rem !important;
             }
             
             .slide-3 h2 {
@@ -2348,10 +2378,44 @@
                 font-size: 1rem !important;
             }
             
-            /* Slide 3 */
+            /* Slide 3 - Mobile Grid Layout */
             .slide-3 .diagram {
-                transform: scale(0.45) !important;
-                margin: -80px 0 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                grid-template-rows: auto auto auto auto !important;
+                gap: 12px !important;
+                padding: 15px !important;
+                width: 100% !important;
+                transform: none !important;
+                margin: 0 !important;
+            }
+            
+            .slide-3 .center-circle {
+                grid-column: 1 / -1 !important;
+                width: 120px !important;
+                height: 120px !important;
+                font-size: 0.9rem !important;
+                margin: 0 auto 10px !important;
+                position: relative !important;
+            }
+            
+            .slide-3 .element {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+                padding: 12px 16px !important;
+                font-size: 0.85rem !important;
+                text-align: center !important;
+                justify-content: center !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+            
+            .slide-3 .element i {
+                margin-right: 6px !important;
             }
             
             /* Slide 4 */
