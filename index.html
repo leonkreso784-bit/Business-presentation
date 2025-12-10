@@ -2418,100 +2418,487 @@
                 margin-right: 6px !important;
             }
             
-            /* Slide 4 */
+            /* Slide 4 - Timeline MOBILE FIX */
+            .slide-4 {
+                padding-bottom: 100px !important;
+            }
+            
+            .slide-4 h2 {
+                font-size: 1.1rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                white-space: normal !important;
+                line-height: 1.3 !important;
+            }
+            
+            .slide-4 .timeline-image {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 150px !important;
+                margin-bottom: 15px !important;
+            }
+            
             .slide-4 .timeline-image img {
-                height: 120px !important;
+                height: 100% !important;
+                max-height: 150px !important;
+            }
+            
+            .slide-4 .timeline {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                width: 100% !important;
+                gap: 10px !important;
+            }
+            
+            .slide-4 .timeline-line {
+                display: none !important;
+            }
+            
+            .slide-4 .timeline-point {
+                flex-direction: row !important;
+                align-items: center !important;
+                background: rgba(255,199,44,0.15) !important;
+                padding: 10px 15px !important;
+                border-radius: 10px !important;
+                margin: 0 !important;
+                gap: 10px !important;
             }
             
             .slide-4 .timeline-point .year {
                 font-size: 1rem !important;
+                margin-bottom: 0 !important;
+                min-width: 50px !important;
+            }
+            
+            .slide-4 .timeline-point .dot {
+                width: 15px !important;
+                height: 15px !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
             }
             
             .slide-4 .timeline-point .desc {
                 font-size: 0.7rem !important;
+                text-align: left !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                white-space: normal !important;
             }
             
-            /* Slide 5 - Ray Kroc */
+            /* Slide 5 - Ray Kroc MOBILE FIX */
+            .slide-5 {
+                padding-bottom: 100px !important;
+            }
+            
             .slide-5 .number {
                 font-size: 35px !important;
             }
             
             .slide-5 h2 {
                 font-size: 1.2rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-5 .ray-image {
+                width: 100px !important;
+                height: 100px !important;
+                margin: 10px auto !important;
             }
             
             .slide-5 .ray-image img {
-                width: 120px !important;
-                height: 120px !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            .slide-5 .right-content {
+                padding: 10px !important;
             }
             
             .slide-5 .quote {
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
+                padding: 0 10px !important;
+                margin-bottom: 15px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-5 .quote::before,
+            .slide-5 .quote::after {
+                font-size: 2rem !important;
             }
             
             .slide-5 .fact {
-                padding: 10px 15px !important;
-                font-size: 0.8rem !important;
+                padding: 10px 12px !important;
+                font-size: 0.75rem !important;
+                margin-bottom: 8px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
             }
             
-            /* Slide 6-7 */
-            .slide-6 .column h3, .slide-7 h3 {
+            .slide-5 .fact i {
+                margin-right: 8px !important;
                 font-size: 1rem !important;
             }
             
-            .slide-6 .item, .slide-7 .item {
-                padding: 8px !important;
-                font-size: 0.75rem !important;
+            /* Slide 6 - PILLARS MOBILE FIX */
+            .slide-6 {
+                flex-direction: column !important;
+                padding: 15px !important;
+                padding-bottom: 100px !important;
+                gap: 15px !important;
             }
             
-            /* Slide 8 */
-            .slide-8 .stat-box .number {
+            .slide-6::before {
+                font-size: 15rem !important;
+                opacity: 0.03 !important;
+            }
+            
+            .slide-6 h2 {
+                font-size: 1.1rem !important;
+                text-align: center !important;
+                margin-bottom: 15px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-6 .pillars {
+                width: 100% !important;
+            }
+            
+            .slide-6 .pillar {
+                padding: 12px 15px !important;
+                font-size: 0.8rem !important;
+                margin-bottom: 8px !important;
+                border-radius: 12px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                white-space: normal !important;
+            }
+            
+            .slide-6 .pillar i {
+                margin-right: 10px !important;
+                font-size: 1rem !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .slide-6 .slogan-area {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            .slide-6 .arches {
+                font-size: 3rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .slide-6 .slogan {
                 font-size: 1.5rem !important;
+                margin-bottom: 10px !important;
             }
             
-            .slide-8 .stat-box .label {
-                font-size: 0.7rem !important;
-            }
-            
-            /* Slide 9 */
-            .slide-9 .takeaway {
-                padding: 12px !important;
+            .slide-6 .slogan-info {
                 font-size: 0.8rem !important;
             }
             
-            .slide-9 .takeaway .num {
-                font-size: 1.2rem !important;
-                width: 30px !important;
-                height: 30px !important;
+            /* Slide 7 - Franchise Model MOBILE FIX */
+            .slide-7 {
+                padding: 15px !important;
+                padding-bottom: 100px !important;
             }
             
-            /* Slide 10 - Movie */
+            .slide-7 h2 {
+                font-size: 1.1rem !important;
+                margin-bottom: 15px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-7 .model-row {
+                flex-direction: column !important;
+                gap: 15px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .slide-7 .arrow {
+                display: none !important;
+            }
+            
+            .slide-7 .model-box {
+                width: 100% !important;
+                padding: 15px !important;
+                border-radius: 15px !important;
+            }
+            
+            .slide-7 .model-box h3 {
+                font-size: 1rem !important;
+                margin-bottom: 12px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-7 .model-box h3 i {
+                margin-right: 8px !important;
+                font-size: 1.2rem !important;
+            }
+            
+            .slide-7 .model-box ul {
+                font-size: 0.75rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .slide-7 .model-box ul li {
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                white-space: normal !important;
+                margin-bottom: 5px !important;
+            }
+            
+            .slide-7 .stats-row {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            
+            .slide-7 .stat-box {
+                width: 100% !important;
+                padding: 15px !important;
+            }
+            
+            .slide-7 .stat-box .value {
+                font-size: 1.5rem !important;
+            }
+            
+            .slide-7 .stat-box .label {
+                font-size: 0.7rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            /* Slide 8 - Global Empire MOBILE FIX */
+            .slide-8 {
+                padding: 15px !important;
+                padding-bottom: 100px !important;
+            }
+            
+            .slide-8::before {
+                font-size: 8rem !important;
+            }
+            
+            .slide-8 h2 {
+                font-size: 1.1rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-8 .stats-main {
+                flex-direction: column !important;
+                gap: 15px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .slide-8 .big-stat {
+                text-align: center !important;
+            }
+            
+            .slide-8 .big-stat .number {
+                font-size: 3rem !important;
+            }
+            
+            .slide-8 .big-stat .label {
+                font-size: 0.9rem !important;
+            }
+            
+            .slide-8 .side-stats {
+                text-align: center !important;
+            }
+            
+            .slide-8 .side-stat {
+                font-size: 1.3rem !important;
+                justify-content: center !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .slide-8 .moscow-section {
+                flex-direction: column !important;
+                padding: 15px !important;
+                gap: 15px !important;
+            }
+            
+            .slide-8 .moscow-image {
+                width: 100% !important;
+                height: 150px !important;
+            }
+            
+            .slide-8 .moscow-text h3 {
+                font-size: 1.1rem !important;
+                word-wrap: break-word !important;
+            }
+            
+            .slide-8 .moscow-text p {
+                font-size: 0.8rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            /* Slide 9 - Key Takeaways MOBILE FIX */
+            .slide-9 {
+                padding: 15px !important;
+                padding-bottom: 100px !important;
+            }
+            
+            .slide-9 h2 {
+                font-size: 1.1rem !important;
+                margin-bottom: 15px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-9 .takeaways {
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: none !important;
+                gap: 10px !important;
+            }
+            
+            .slide-9 .takeaway {
+                padding: 15px !important;
+                border-radius: 15px !important;
+            }
+            
+            .slide-9 .takeaway .num {
+                font-size: 1.5rem !important;
+                width: auto !important;
+                height: auto !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .slide-9 .takeaway .text {
+                font-size: 0.75rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                white-space: normal !important;
+                line-height: 1.4 !important;
+            }
+            
+            .slide-9 .takeaway i {
+                font-size: 1.2rem !important;
+                margin-bottom: 8px !important;
+            }
+            
+            /* Slide 10 - Movie MOBILE FIX */
+            .slide-10 {
+                padding: 15px !important;
+                padding-bottom: 100px !important;
+                text-align: center !important;
+            }
+            
+            .slide-10 h2 {
+                font-size: 1.1rem !important;
+                word-wrap: break-word !important;
+            }
+            
+            .slide-10 .poster {
+                width: 120px !important;
+                height: 180px !important;
+                margin: 0 auto 15px !important;
+            }
+            
             .slide-10 .poster img {
-                width: 140px !important;
-                height: 200px !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            .slide-10 .movie-info {
+                padding: 0 10px !important;
             }
             
             .slide-10 .movie-title {
                 font-size: 1rem !important;
+                margin-bottom: 10px !important;
+                word-wrap: break-word !important;
             }
             
             .slide-10 .movie-desc {
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 15px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
             }
             
             .slide-10 .movie-quote {
-                font-size: 0.75rem !important;
+                font-size: 0.7rem !important;
                 padding: 12px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
             }
             
-            /* Slide 11 */
-            .slide-11 h2 {
-                font-size: 1.5rem !important;
+            .slide-10 .rating {
+                justify-content: center !important;
+            }
+            
+            .slide-10 .rating i {
+                font-size: 1rem !important;
+            }
+            
+            /* Slide 11 - Thank You MOBILE FIX */
+            .slide-11 {
+                padding: 15px !important;
+                padding-bottom: 100px !important;
+            }
+            
+            .slide-11::before {
+                width: 300px !important;
+                height: 300px !important;
+            }
+            
+            .slide-11 .thank-band {
+                padding: 30px 15px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .slide-11 h1 {
+                font-size: 2rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+                white-space: normal !important;
+            }
+            
+            .slide-11 .gold-line {
+                height: 5px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .slide-11 .questions {
+                font-size: 1.2rem !important;
+                margin-bottom: 20px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
+            }
+            
+            .slide-11 .author {
+                font-size: 0.8rem !important;
+                flex-direction: column !important;
+                gap: 5px !important;
+                word-wrap: break-word !important;
+            }
+            
+            .slide-11 .social-icons {
+                gap: 10px !important;
+                margin-top: 15px !important;
+            }
+            
+            .slide-11 .social-icons a {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.1rem !important;
             }
             
             .slide-11 .contact-item {
                 padding: 10px 15px !important;
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
+                word-wrap: break-word !important;
+                overflow-wrap: anywhere !important;
             }
             
             /* Navigation - FIXED FOR MOBILE */
