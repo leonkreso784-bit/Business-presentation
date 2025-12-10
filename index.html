@@ -1920,75 +1920,99 @@
             .slide-1 {
                 flex-direction: column !important;
                 text-align: center;
-                padding: 15px 15px 90px 15px !important;
-                justify-content: flex-start !important;
+                padding: 20px 20px 100px 20px !important;
+                justify-content: center !important;
                 align-items: center !important;
-                gap: 8px !important;
-                background: linear-gradient(180deg, var(--mcd-red) 0%, #8B0000 100%) !important;
+                gap: 15px !important;
+                background: linear-gradient(180deg, var(--mcd-red) 0%, #B71C1C 50%, #8B0000 100%) !important;
                 overflow-y: auto !important;
+                min-height: 100vh !important;
+            }
+            
+            .slide-1::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: radial-gradient(circle at 50% 30%, rgba(255,199,44,0.15) 0%, transparent 50%) !important;
+                pointer-events: none !important;
             }
             
             .slide-1 .mcd-logo {
-                font-size: 50px !important;
+                font-size: 60px !important;
                 position: relative !important;
                 top: auto !important;
                 right: auto !important;
-                margin-bottom: 5px;
-                text-shadow: 0 0 30px rgba(255,199,44,0.8);
+                margin-bottom: 0 !important;
+                text-shadow: 0 0 40px rgba(255,199,44,0.9), 0 0 80px rgba(255,199,44,0.5) !important;
                 order: 0;
+                animation: glowPulse 2s ease-in-out infinite !important;
             }
             
             .slide-1 .left-panel {
                 width: 100% !important;
                 height: auto !important;
-                margin-bottom: 8px;
+                margin-bottom: 10px !important;
                 order: 1;
                 display: flex !important;
                 justify-content: center !important;
             }
             
             .slide-1 .left-panel img {
-                max-width: 100px !important;
+                max-width: 140px !important;
                 height: auto !important;
-                border-radius: 15px !important;
-                filter: drop-shadow(0 0 15px rgba(255,199,44,0.6)) !important;
+                border-radius: 0 !important;
+                filter: drop-shadow(0 0 30px rgba(255,199,44,0.8)) drop-shadow(0 0 60px rgba(255,199,44,0.4)) !important;
             }
             
             .slide-1 .right-panel {
                 width: 100% !important;
-                padding: 0 10px !important;
+                padding: 0 15px !important;
                 order: 2;
             }
             
             .slide-1 h1 {
-                font-size: 1.4rem !important;
-                line-height: 1.1 !important;
-                margin-bottom: 8px !important;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                font-size: 1.8rem !important;
+                line-height: 1.15 !important;
+                margin-bottom: 12px !important;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.4) !important;
+                font-weight: 900 !important;
+                letter-spacing: 1px !important;
             }
             
             .slide-1 .gold-bar {
-                width: 100px !important;
-                height: 3px !important;
-                margin: 8px auto !important;
+                width: 120px !important;
+                height: 4px !important;
+                margin: 15px auto !important;
+                background: linear-gradient(90deg, transparent, var(--mcd-yellow), transparent) !important;
+                border-radius: 2px !important;
             }
             
             .slide-1 .subtitle {
-                font-size: 0.85rem !important;
-                margin-bottom: 10px !important;
+                font-size: 1rem !important;
+                margin-bottom: 15px !important;
+                color: var(--mcd-yellow) !important;
+                font-weight: 600 !important;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.3) !important;
             }
             
             .slide-1 .author {
-                font-size: 0.7rem !important;
-                line-height: 1.5 !important;
-                background: rgba(0,0,0,0.3);
-                padding: 8px 12px;
-                border-radius: 8px;
-                margin-bottom: 10px;
+                font-size: 0.8rem !important;
+                line-height: 1.8 !important;
+                background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)) !important;
+                padding: 15px 20px !important;
+                border-radius: 15px !important;
+                margin-bottom: 0 !important;
+                backdrop-filter: blur(5px) !important;
+                border: 1px solid rgba(255,199,44,0.2) !important;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2) !important;
             }
             
             .slide-1 .author i {
-                color: var(--mcd-yellow);
+                color: var(--mcd-yellow) !important;
+                margin-right: 8px !important;
             }
             
             .slide-1 .image-gallery {
@@ -2300,18 +2324,73 @@
                 display: none;
             }
             
-            /* Info Panel Mobile */
+            /* Info Panel Mobile - IMPROVED */
             .info-panel {
-                width: 100%;
-                right: -100%;
+                width: 100% !important;
+                right: -100% !important;
+                max-height: 90vh !important;
+                border-radius: 20px 20px 0 0 !important;
+                bottom: 0 !important;
+                top: auto !important;
+            }
+            
+            .info-panel.active {
+                right: 0 !important;
+            }
+            
+            .info-panel-header {
+                padding: 15px 20px !important;
+                position: sticky !important;
+                top: 0 !important;
+                z-index: 10 !important;
             }
             
             .info-panel-header h3 {
-                font-size: 1.2rem;
+                font-size: 1.1rem !important;
             }
             
             .info-panel-content {
-                padding: 20px;
+                padding: 15px 20px 30px !important;
+                overflow-y: auto !important;
+                max-height: calc(90vh - 60px) !important;
+            }
+            
+            .info-panel-content img {
+                max-width: 150px !important;
+                height: 150px !important;
+                margin: 0 auto 15px !important;
+            }
+            
+            .info-panel-content p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .info-panel-content ul {
+                padding-left: 0 !important;
+            }
+            
+            .info-panel-content ul li {
+                font-size: 0.85rem !important;
+                padding: 10px 0 !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+            }
+            
+            .info-panel-stats {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            
+            .info-panel-stat {
+                padding: 12px !important;
+            }
+            
+            .info-panel-stat .value {
+                font-size: 1.3rem !important;
+            }
+            
+            .info-panel-stat .label {
+                font-size: 0.7rem !important;
             }
         }
         
@@ -3703,7 +3782,7 @@
             'ray-kroc-bio': {
                 title: '👤 Ray Kroc - Biography',
                 content: `
-                    <img src="images/businessman.jpg" alt="Ray Kroc" style="width:100%; height:150px; object-fit:cover; border-radius: 15px; margin-bottom: 20px;">
+                    <img src="images/raz kroc.webp" alt="Ray Kroc" style="width:100%; max-width:200px; height:200px; object-fit:cover; border-radius: 50%; margin: 0 auto 20px; display: block; border: 4px solid #FFC72C; box-shadow: 0 0 20px rgba(255,199,44,0.5);">
                     <p><strong>Raymond Albert Kroc</strong> (1902-1984) transformed McDonald's from a single restaurant into a global empire.</p>
                     <ul>
                         <li><i class="fas fa-birthday-cake"></i> Born: October 5, 1902, Oak Park, IL</li>
